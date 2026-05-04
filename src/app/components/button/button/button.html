@@ -3,7 +3,7 @@
   type="button"
 >
   @if (showIcon || type === 'icono') {
-    <span class="btn__icon" aria-hidden="true">{{ icon }}</span>
+    <app-icon [name]="icon" [size]="iconSize" />
   }
 
   @if (type !== 'icono') {

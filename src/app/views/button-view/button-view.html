@@ -9,7 +9,7 @@
       <app-button type="secundario" label="Secundario" size="desktop" />
       <app-button type="exito"      label="Éxito"      size="desktop" />
       <app-button type="alerta"     label="Alerta"     size="desktop" />
-      <app-button type="icono"      icon="★"           size="desktop" />
+      <app-button type="icono"      icon="Icono_add"   size="desktop" />
       <app-button type="usuario"    label="Usuario"    size="desktop" />
     </div>
   </section>
@@ -32,7 +32,7 @@
       <app-button type="secundario" label="Secundario" hover="resaltado" size="desktop" />
       <app-button type="exito"      label="Éxito"      hover="resaltado" size="desktop" />
       <app-button type="alerta"     label="Alerta"     hover="resaltado" size="desktop" />
-      <app-button type="icono"      icon="★"           hover="resaltado" size="desktop" />
+      <app-button type="icono"      icon="Icono_add"   hover="resaltado" size="desktop" />
       <app-button type="usuario"    label="Usuario"    hover="resaltado" size="desktop" />
     </div>
   </section>
@@ -41,12 +41,22 @@
   <section class="view__section">
     <h2 class="view__subtitle">Con ícono</h2>
     <div class="view__row">
-      <app-button type="primario"   label="Buscar"   [showIcon]="true" icon="🔍" size="desktop" />
-      <app-button type="secundario" label="Editar"   [showIcon]="true" icon="✏️" size="desktop" />
-      <app-button type="exito"      label="Guardar"  [showIcon]="true" icon="✔"  size="desktop" />
-      <app-button type="alerta"     label="Eliminar" [showIcon]="true" icon="🗑" size="desktop" />
-      <app-button type="usuario"    label="Perfil"   [showIcon]="true" icon="👤" size="desktop" />
+      <app-button type="primario"   label="Agregar"  [showIcon]="true" icon="Icono_agregar" size="desktop" />
+      <app-button type="secundario" label="Notebook" [showIcon]="true" icon="Icono_notebook" size="desktop" />
+      <app-button type="exito"      label="Excel"    [showIcon]="true" icon="Icono_excel"   size="desktop" />
+      <app-button type="alerta"     label="Eliminar" [showIcon]="true" icon="Icono_trash"   size="desktop" />
+      <app-button type="usuario"    label="Perfil"   [showIcon]="true" icon="Vector"        size="desktop" />
     </div>
   </section>
 
+  <!-- ── DESHABILITADO ── -->
+  <section class="view__section">
+    <h2 class="view__subtitle">Deshabilitado</h2>
+    <div class="view__row">
+      <app-button type="primario"   label="Primario"   [disabled]="true" size="desktop" />
+      <app-button type="secundario" label="Secundario" [disabled]="true" size="desktop" />
+      <app-button type="exito"      label="Éxito"      [disabled]="true" size="desktop" />
+      <app-button type="alerta"     label="Alerta"     [disabled]="true" size="desktop" />
+    </div>
+  </section>
 </div>
