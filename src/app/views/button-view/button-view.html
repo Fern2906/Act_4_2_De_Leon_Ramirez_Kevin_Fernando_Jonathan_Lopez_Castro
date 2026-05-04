@@ -1,0 +1,52 @@
+<div class="view">
+  <h1 class="view__title">Botones</h1>
+
+  <!-- ── TIPOS ── -->
+  <section class="view__section">
+    <h2 class="view__subtitle">Tipos</h2>
+    <div class="view__row">
+      <app-button type="primario"   label="Primario"   size="desktop" />
+      <app-button type="secundario" label="Secundario" size="desktop" />
+      <app-button type="exito"      label="Éxito"      size="desktop" />
+      <app-button type="alerta"     label="Alerta"     size="desktop" />
+      <app-button type="icono"      icon="★"           size="desktop" />
+      <app-button type="usuario"    label="Usuario"    size="desktop" />
+    </div>
+  </section>
+
+  <!-- ── TAMAÑOS ── -->
+  <section class="view__section">
+    <h2 class="view__subtitle">Tamaños</h2>
+    <div class="view__row view__row--align-end">
+      <app-button type="primario" label="Desktop" size="desktop" />
+      <app-button type="primario" label="Tablet"  size="tablet" />
+      <app-button type="primario" label="Mobile"  size="mobile" />
+    </div>
+  </section>
+
+  <!-- ── HOVER RESALTADO ── -->
+  <section class="view__section">
+    <h2 class="view__subtitle">Hover (resaltado)</h2>
+    <div class="view__row">
+      <app-button type="primario"   label="Primario"   hover="resaltado" size="desktop" />
+      <app-button type="secundario" label="Secundario" hover="resaltado" size="desktop" />
+      <app-button type="exito"      label="Éxito"      hover="resaltado" size="desktop" />
+      <app-button type="alerta"     label="Alerta"     hover="resaltado" size="desktop" />
+      <app-button type="icono"      icon="★"           hover="resaltado" size="desktop" />
+      <app-button type="usuario"    label="Usuario"    hover="resaltado" size="desktop" />
+    </div>
+  </section>
+
+  <!-- ── CON ÍCONO ── -->
+  <section class="view__section">
+    <h2 class="view__subtitle">Con ícono</h2>
+    <div class="view__row">
+      <app-button type="primario"   label="Buscar"   [showIcon]="true" icon="🔍" size="desktop" />
+      <app-button type="secundario" label="Editar"   [showIcon]="true" icon="✏️" size="desktop" />
+      <app-button type="exito"      label="Guardar"  [showIcon]="true" icon="✔"  size="desktop" />
+      <app-button type="alerta"     label="Eliminar" [showIcon]="true" icon="🗑" size="desktop" />
+      <app-button type="usuario"    label="Perfil"   [showIcon]="true" icon="👤" size="desktop" />
+    </div>
+  </section>
+
+</div>

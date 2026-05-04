@@ -1,0 +1,86 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font: var(--text-body-second)
+}
+
+/* ─── Tamaños ─── */
+.btn--desktop {
+  height: var(--btn-height-desktop);
+  padding: var(--padding-v-desktop) var(--padding-h-desktop);
+}
+
+.btn--tablet {
+  height: var(--btn-height-tablet);
+  padding: var(--padding-tablet) var(--padding-h-desktop);
+}
+
+.btn--mobile {
+  height: var(--btn-height-mobile);
+  padding: var(--padding-v-mobile) var(--padding-h-mobile);
+}
+
+/* ─── Primario ─── */
+.btn--primario {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.btn--primario:hover {
+  background-color: #002A78;
+}
+
+/* ─── Secundario ─── */
+.btn--secundario {
+  background-color: var(--background-soft);
+  border: 2px solid var(--blue-dark);
+}
+
+.btn--secundario:hover {
+  background-color: #DEDFDF;
+  border: 2px solid #0C1926;
+}
+
+/* ─── Éxito ─── */
+.btn--exito {
+  background-color: var(--success);
+}
+
+.btn--exito:hover {
+  background-color: #0C5928;
+}
+
+/* ─── Alerta ─── */
+.btn--alerta {
+  background-color: var(--danger);
+}
+
+.btn--alerta:hover {
+  background-color: #FA1818;
+}
+
+/* ─── Ícono ─── */
+.btn--icono {
+  background-color: var(--background-soft);
+  border: 2px solid var(--blue-dark);
+}
+
+.btn--icono:hover {
+  background-color: #B8B8B8;
+}
+
+/* ─── Usuario ─── */
+.btn--usuario {
+  background-color: #364C93;
+  border: 1px solid #8DA0BF;
+}
+
+.btn--usuario:hover {
+  background-color: #1135AC;
+}
+
+

@@ -1,5 +1,4 @@
 :root {
-  /* ===== COLORES ===== */
   --primary-blue: #004A98;       
   --blue-dark: #003B79;
   --success: #28a745;
@@ -13,15 +12,12 @@
   --botonperfil: #e0e0e0;
   --encabezado: #f8f9fa;
 
-  /* ===== TIPOGRAFÍA ===== */
   --font-family: 'Open Sans', sans-serif;
 
-  /* ===== TAMAÑOS BOTONES ===== */
   --btn-height-desktop: 48px;
   --btn-height-tablet: 44px;
   --btn-height-mobile: 36px;
 
-  /* ===== PADDING ===== */
   --padding-v-desktop: 12px;
   --padding-h-desktop: 16px;
 
@@ -29,4 +25,31 @@
 
   --padding-v-mobile: 8px;
   --padding-h-mobile: 12px;
+
+  --text-heading-h1:      700 32px/auto var(--font-family);
+  --text-heading-h2:      700 24px/auto var(--font-family);
+  --text-heading-h2-semi: 600 20px/auto var(--font-family);
+  --text-body-medium:     600 20px/auto var(--font-family);
+  --text-body-regular:    400 16px/auto var(--font-family);
+  --text-body-second:     600 16px/auto var(--font-family);
+  --text-body-small:      400 14px/auto var(--font-family);
+  --text-label:           600 12px/auto var(--font-family);
 }
+
+body {
+  margin: 0;
+  font: var(--text-body-regular);
+  color: var(--text-main);
+  background-color: var(--background-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Clases utilitarias de tipografía ──
+.text-h1          { font: var(--text-heading-h1); }
+.text-h2          { font: var(--text-heading-h2); }
+.text-h2-semi     { font: var(--text-heading-h2-semi); }
+.text-body-medium { font: var(--text-body-medium); }
+.text-body        { font: var(--text-body-regular); }
+.text-body-second { font: var(--text-body-second); }
+.text-body-small  { font: var(--text-body-small); }
+.text-label       { font: var(--text-label); } */

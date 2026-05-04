@@ -1,0 +1,12 @@
+<button
+  [class]="'btn btn--' + type + ' btn--' + size + (hover === 'resaltado' ? ' btn--resaltado' : '')"
+  type="button"
+>
+  @if (showIcon || type === 'icono') {
+    <span class="btn__icon" aria-hidden="true">{{ icon }}</span>
+  }
+
+  @if (type !== 'icono') {
+    <span class="btn__label">{{ label }}</span>
+  }
+</button>
