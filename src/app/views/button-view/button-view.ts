@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Button } from '../../components/button/button/button';
+import { Button } from '../../components/button/button';
 
 @Component({
   selector: 'app-button-view',

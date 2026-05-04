@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Icon } from "../../icon/icon";
+import { Icon } from "../icon/icon";
 
 export type ButtonSize = 'mobile' | 'tablet' | 'desktop';
 export type ButtonType = 'primario' | 'secundario' | 'exito' | 'alerta' | 'icono' | 'usuario';
