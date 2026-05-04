@@ -1,0 +1,45 @@
+.span{
+    display: inline-flex;
+    padding: 8px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font: var(--text-body-second);
+    border-radius: 30px;
+    color: #FFFF;
+}
+
+.span--clase {
+    background: var(--Success, #16A34A);
+}
+
+.span--examen {
+    background: var(--Danger, #EF4444);
+}
+
+.span--administrativa {
+    background: var(--Neutral, #6B7280);
+}
+
+.span--atraso{
+    background: var(--Warning, #F5C62C);
+}
+
+.span--completado {
+    color: #003017;
+    border: 1px solid var(--Success, #16A34A);
+    background: #BAE8C1;
+}
+
+.span--masDel25 {
+    color: #003017;
+    border: 1px solid var(--Blue-Dark, #003A78);
+    background: #B8C2E3;
+}
+
+.span--menosDel25 {
+    color: #003017;
+    border: 1px solid var(--Neutral, #6B7280);
+    background: rgba(234, 233, 233, 0.85);
+}
+
