@@ -15,10 +15,9 @@ export class Button {
   @Input() size: ButtonSize = 'desktop';
   @Input() type: ButtonType = 'primario';
   @Input() hover: ButtonHover = 'predeterminado';
-  @Input() showIcon: boolean = false;
-  @Input() icon: string = '';
-  @Input() label: string = 'Botón';
-  @Input() disabled: boolean = false;
+  @Input() showIcon: boolean = true;
+  @Input() icon: string = 'Icono_agregar';
+  @Input() label: string = '';
 
   get iconSize(): number {
     return this.size === 'mobile' ? 16 : this.size === 'tablet' ? 18 : 20;

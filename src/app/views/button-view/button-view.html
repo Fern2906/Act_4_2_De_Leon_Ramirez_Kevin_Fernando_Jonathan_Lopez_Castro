@@ -41,24 +41,14 @@
   <section class="view__section">
     <h2 class="view__subtitle">Con ícono</h2>
     <div class="view__row">
-      <app-button type="primario"   label="Agregar"  [showIcon]="true" icon="Icono_agregar" size="desktop" />
-      <app-button type="secundario" label="Notebook" [showIcon]="true" icon="Icono_notebook" size="desktop" />
-      <app-button type="exito"      label="Excel"    [showIcon]="true" icon="Icono_excel"   size="desktop" />
-      <app-button type="alerta"     label="Eliminar" [showIcon]="true" icon="Icono_trash"   size="desktop" />
-      <app-button type="usuario"    label="Perfil"   [showIcon]="true" icon="Vector"        size="desktop" />
+      <app-button type="primario"   [showIcon]="true" icon="Icono_agregar"  size="desktop" />
+      <app-button type="secundario" [showIcon]="true" icon="Icono_notebook" size="desktop" />
+      <app-button type="exito"      [showIcon]="true" icon="Icono_excel"    size="desktop" />
+      <app-button type="alerta"     [showIcon]="true" icon="Icono_trash"    size="desktop" />
+      <app-button type="usuario"    [showIcon]="true" icon="Vector"         size="desktop" />
     </div>
   </section>
 
-  <!-- ── DESHABILITADO ── -->
-  <section class="view__section">
-    <h2 class="view__subtitle">Deshabilitado</h2>
-    <div class="view__row">
-      <app-button type="primario"   label="Primario"   [disabled]="true" size="desktop" />
-      <app-button type="secundario" label="Secundario" [disabled]="true" size="desktop" />
-      <app-button type="exito"      label="Éxito"      [disabled]="true" size="desktop" />
-      <app-button type="alerta"     label="Alerta"     [disabled]="true" size="desktop" />
-    </div>
-  </section>
 </div>
 
 <div class="view">
