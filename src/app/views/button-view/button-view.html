@@ -68,3 +68,24 @@
     </div>
   </section>
 </div>
+
+<div class="view">
+  <h1 class="view__title">Dropdown</h1>
+
+  <!-- ── TIPOS ── -->
+  <section class="view__section">
+    <h2 class="view__subtitle">Tipos</h2>
+    <div class="view__row">
+      <app-dropdown 
+        estado="default"     
+        label="Seleccionar" 
+        [items]="['Opción 1', 'Opción 2', 'Opción 3']">
+      </app-dropdown>
+      <app-dropdown 
+        estado="selecionado" 
+        label="Seleccionar" 
+        [items]="['Opción 1', 'Opción 2', 'Opción 3']">
+      </app-dropdown>
+    </div>
+  </section>
+</div>

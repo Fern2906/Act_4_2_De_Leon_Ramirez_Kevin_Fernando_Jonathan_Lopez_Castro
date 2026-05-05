@@ -1,0 +1,9 @@
+<select [class]="'select select--' + estado + (tamano ? ' select--' + tamano : '')">
+  <option value="" disabled selected>{{ label }}</option>
+
+  @for (item of items; track $index) {
+    <option [class]="'option' + (tamano ? ' option--' + tamano : '')" [value]="item">
+      {{ item }}
+    </option>
+  }
+</select>

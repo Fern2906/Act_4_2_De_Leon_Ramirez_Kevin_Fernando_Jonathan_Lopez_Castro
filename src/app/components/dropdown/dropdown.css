@@ -1,0 +1,61 @@
+.select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 1px solid #000;
+    font: var(--text-body-regular)
+}
+
+.select--default {
+    background: var(--background-soft, #F8FAFC);
+}
+
+.select--seleccionado {
+    background: #BABABA;
+}
+
+.select--default ::selection{
+    background: #BABABA;
+}
+
+.select--grande {
+    display: flex;
+}
+
+.select--mediano {
+    width: 300px;
+
+}
+
+.select--pequeno {
+    width: 200px;
+}
+
+.option {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 1px solid #000;
+}
+
+.option--grande {
+    display: flex;
+}
+
+.option--mediano {
+    width: 300px;
+
+}
+
+.option--pequeno {
+    width: 200px;
+}
