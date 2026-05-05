@@ -88,4 +88,64 @@
       </app-dropdown>
     </div>
   </section>
+
+    <section class="view__section">
+    <h2 class="view__subtitle">Tamaños</h2>
+    <div class="view__row">
+      <app-dropdown 
+        estado="default"     
+        label="Seleccionar" 
+        tamano="grande"
+        [items]="['Opción 1', 'Opción 2', 'Opción 3']">
+      </app-dropdown>
+      <app-dropdown 
+        estado="default"     
+        label="Seleccionar" 
+        tamano="mediano"
+        [items]="['Opción 1', 'Opción 2', 'Opción 3']">
+      </app-dropdown>
+      <app-dropdown 
+        estado="default"     
+        label="Seleccionar" 
+        tamano="pequeno"
+        [items]="['Opción 1', 'Opción 2', 'Opción 3']">
+      </app-dropdown>
+
+    </div>
+  </section>
+</div>
+
+<div class="view">
+  <h1 class="view__title">Inputs</h1>
+
+  <!-- ── TIPOS ── -->
+  <section class="view__section">
+    <h2 class="view__subtitle">Tipos</h2>
+    <div class="view__row">
+      <app-inputs 
+        tipo="texto">
+      </app-inputs>
+      <app-inputs 
+        tipo="numero">
+      </app-inputs>
+      <app-inputs 
+        tipo="fecha">
+      </app-inputs>
+    </div>
+  </section>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Tamaños</h2>
+    <div class="view__row">
+      <app-inputs 
+        tamano="grande">
+      </app-inputs>
+      <app-inputs 
+        tamano="mediano">
+      </app-inputs>
+      <app-inputs 
+        tamano="pequeno">
+      </app-inputs>
+    </div>
+  </section>
 </div>

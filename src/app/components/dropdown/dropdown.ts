@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class Dropdown {
   @Input() estado: string = 'default';
-  @Input() tamano: string = '';
+  @Input() tamano: string = 'grande';
   @Input() label: string = 'Seleccionar';
   @Input() items: string[] = [];
 }

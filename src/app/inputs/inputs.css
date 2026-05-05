@@ -1,0 +1,34 @@
+.input {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--Neutral, #6B7280);
+    background: var(--background-soft, #F8FAFC);   
+    font-family: var(--body-second); 
+}
+
+.input--grande{
+    width: 471px;
+    height: 44px;
+    padding: 2px 334px 0 4px;
+}
+
+.input--mediano{
+    width: 344px;
+    height: 44px;
+    padding: 2px 207px 0 4px;
+}
+
+.input--pequeno{
+    width: 241px;
+    height: 44px;
+    padding: 2px 104px 0 4px;
+}
+
+/* .input--texto{
+
+}
+
+.input--numero{
+
+} */
