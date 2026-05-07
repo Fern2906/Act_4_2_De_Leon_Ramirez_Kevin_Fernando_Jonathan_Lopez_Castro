@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Button } from '../../components/button/button';
 import { Etiqueta } from '../../components/etiqueta/etiqueta';
 import { Dropdown } from '../../components/dropdown/dropdown';
-import { Inputs } from '../../inputs/inputs';
+import { Inputs } from '../../components/inputs/inputs';
 
 @Component({
   selector: 'app-button-view',

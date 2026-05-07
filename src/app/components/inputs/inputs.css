@@ -4,7 +4,7 @@
     border-radius: 8px;
     border: 1px solid var(--Neutral, #6B7280);
     background: var(--background-soft, #F8FAFC);   
-    font-family: var(--body-second); 
+    font-family: var(--text-body-second); 
 }
 
 .input--grande{
@@ -24,11 +24,3 @@
     height: 44px;
     padding: 2px 104px 0 4px;
 }
-
-/* .input--texto{
-
-}
-
-.input--numero{
-
-} */

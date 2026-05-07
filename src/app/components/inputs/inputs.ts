@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 
 export class Inputs {
   @Input() tipo: string = "texto"
-  @Input() tamano: string = ""
+  @Input() tamano: string = "grande "
   
   get inputType(): string {
     switch (this.tipo) {
