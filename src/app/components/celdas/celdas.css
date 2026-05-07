@@ -1,0 +1,113 @@
+/* ── Contenedor general ── */
+.celdas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/* ── Fila ── */
+.celdas__fila {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Inputs de texto ── */
+.celdas__input {
+  width: 80px;
+  padding: 8px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font: var(--text-body-regular);
+  background: var(--background-white);
+  color: var(--text-main);
+}
+
+/* ── Selector de mes ── */
+.celdas__mes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: var(--background-white);
+  font: var(--text-body-regular);
+}
+
+.celdas__mes-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.celdas__mes-nav:hover {
+  opacity: 0.6;
+}
+
+/* ── Colores seleccionables ── */
+.celdas__colores {
+  display: flex;
+  gap: 6px;
+}
+
+.celdas__color {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: outline 0.15s;
+}
+
+.celdas__color--blanco   { background-color: #FFFFFF; border-color: #ccc; }
+.celdas__color--gris     { background-color: #6c757d; }
+.celdas__color--verde    { background-color: #28a745; }
+.celdas__color--amarillo { background-color: #ffc107; }
+.celdas__color--rojo     { background-color: #dc3545; }
+
+.celdas__color--activo {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* ── Botón eliminar ── */
+.celdas__delete {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-white);
+  border: 2px solid var(--primary-blue);
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.celdas__delete:hover {
+  background: #e8f0fe;
+}
+
+/* ── Información ── */
+.celdas__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.celdas__info-titulo {
+  font: var(--text-body-second);
+  color: var(--text-main);
+}
+
+.celdas__info-desc {
+  font: var(--text-body-small);
+  color: var(--neutral);
+}

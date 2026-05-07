@@ -1,0 +1,62 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--background-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* ── Cabecera ── */
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__header-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card__subtitulo {
+  font: var(--text-body-small);
+  color: var(--neutral);
+}
+
+.card__titulo {
+  font: var(--text-body-second);
+  color: var(--primary-blue);
+}
+
+/* ── Etiquetas bajo el header ── */
+.card__etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── Barra de búsqueda ── */
+.card__busqueda app-barra-busqueda {
+  width: 100%;
+}
+
+/* ── Cuerpo ── */
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+/* ── Pie ── */
+.card__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}

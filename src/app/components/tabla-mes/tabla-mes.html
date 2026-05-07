@@ -1,0 +1,77 @@
+<!-- ── Molécula/Mes ── -->
+<div class="tm-molecula">
+  <div class="tm-molecula__celdas">
+    @for (d of dias; track $index) {
+      <div class="tm-celda"></div>
+    }
+  </div>
+</div>
+
+<!-- ── Tabla ── -->
+<div class="tm-tabla-wrap">
+
+  <table class="tm-tabla">
+    <thead>
+      <tr>
+        <th class="tm-th tm-th--tema">TEMA</th>
+        <th class="tm-th">HP</th>
+        <th class="tm-th">HR</th>
+        <th class="tm-th tm-th--mes">
+          {{ mesActual }}
+          <button class="tm-nav" type="button" (click)="anteriorMes()">
+            <app-icon name="Chevron left" [size]="12" />
+          </button>
+          <button class="tm-nav" type="button" (click)="siguienteMes()">
+            <app-icon name="Chevron right" [size]="12" />
+          </button>
+        </th>
+        <th class="tm-th">Problemas</th>
+        <th class="tm-th">Teoría</th>
+        <th class="tm-th">Trabajos</th>
+        <th class="tm-th">Tareas</th>
+        <th class="tm-th">Exámenes</th>
+        <th class="tm-th">%</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (fila of filas; track $index) {
+        <tr class="tm-tr">
+          <!-- Tema -->
+          <td class="tm-td tm-td--tema">
+            
+            <div class="tm-tema">
+              <span class="tm-tema__titulo">{{ fila.titulo }}</span>
+              <span class="tm-tema__desc">{{ fila.descripcion }}</span>
+            </div>
+            <button class="tm-delete" type="button">
+              <app-icon name="Icono_trash" [size]="18" />
+            </button>
+          </td>
+          <!-- HP -->
+          <td class="tm-td">
+            <input class="tm-input" type="number" [value]="fila.hp" placeholder="Num" />
+          </td>
+          <!-- HR -->
+          <td class="tm-td">
+            <input class="tm-input" type="number" [value]="fila.hr" placeholder="Num" />
+          </td>
+          <!-- Celdas de días -->
+          <td class="tm-td tm-td--dias">
+            <div class="tm-dias">
+              @for (d of dias; track $index) {
+                <div class="tm-celda"></div>
+              }
+            </div>
+          </td>
+          <!-- Columnas numéricas -->
+          <td class="tm-td"><span class="tm-num">{{ fila.problemas ?? 'Num' }}</span></td>
+          <td class="tm-td"><span class="tm-num">{{ fila.teoria ?? 'Num' }}</span></td>
+          <td class="tm-td"><span class="tm-num">{{ fila.trabajos ?? 'Num' }}</span></td>
+          <td class="tm-td"><span class="tm-num">{{ fila.tareas ?? 'Num' }}</span></td>
+          <td class="tm-td"><span class="tm-num">{{ fila.examenes ?? 'Num' }}</span></td>
+          <td class="tm-td"><span class="tm-num">{{ fila.porcentaje != null ? fila.porcentaje + '%' : 'Num%' }}</span></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

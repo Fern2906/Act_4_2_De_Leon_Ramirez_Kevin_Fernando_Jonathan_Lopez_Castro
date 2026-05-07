@@ -1,0 +1,45 @@
+<div class="celdas">
+  @for (item of items; track $index) {
+    <div class="celdas__fila">
+
+      <!-- Inputs de texto -->
+      <input class="celdas__input" type="text" [value]="item.texto1" />
+      <input class="celdas__input" type="text" [value]="item.texto2" />
+
+      <!-- Selector de mes -->
+      <div class="celdas__mes">
+        <span>{{ item.mes }}</span>
+        <button class="celdas__mes-nav" type="button">
+          <app-icon name="Chevron left" [size]="14" />
+        </button>
+        <button class="celdas__mes-nav" type="button">
+          <app-icon name="Chevron right" [size]="14" />
+        </button>
+      </div>
+
+      <!-- Colores seleccionables -->
+      <div class="celdas__colores">
+        @for (color of colores; track color) {
+          <button
+            type="button"
+            class="celdas__color celdas__color--{{ color }}"
+            [class.celdas__color--activo]="item.colorSeleccionado === color"
+            (click)="seleccionarColor(item, color)">
+          </button>
+        }
+      </div>
+
+      <!-- Botón eliminar -->
+      <button class="celdas__delete" type="button">
+        <app-icon name="Icono_trash" [size]="20" />
+      </button>
+
+      <!-- Información -->
+      <div class="celdas__info">
+        <span class="celdas__info-titulo">{{ item.titulo }}</span>
+        <span class="celdas__info-desc">{{ item.descripcion }}</span>
+      </div>
+
+    </div>
+  }
+</div>
