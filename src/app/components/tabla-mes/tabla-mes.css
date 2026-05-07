@@ -1,0 +1,148 @@
+/* ── Label de sección ── */
+.tm-molecula__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: var(--text-body-small);
+  color: var(--primary-blue);
+  margin-bottom: 8px;
+}
+
+/* ── Sección Molécula/Mes ── */
+.tm-molecula {
+  margin-bottom: 20px;
+}
+
+.tm-molecula__celdas {
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+
+/* ── Celda de día (compartida entre molécula y tabla) ── */
+.tm-celda {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: var(--background-white);
+  flex-shrink: 0;
+}
+
+/* ── Wrapper de tabla ── */
+.tm-tabla-wrap {
+  overflow-x: auto;
+}
+
+/* ── Tabla ── */
+.tm-tabla {
+  border-collapse: collapse;
+  width: 100%;
+  font: var(--text-body-small);
+}
+
+/* ── Encabezados ── */
+.tm-th {
+  background: var(--encabezado, #f8f9fa);
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  white-space: nowrap;
+  font: var(--text-body-second);
+  text-align: left;
+}
+
+.tm-th--tema {
+  min-width: 160px;
+}
+
+.tm-th--mes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Nav mes ── */
+.tm-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.tm-nav:hover { opacity: 0.6; }
+
+/* ── Filas ── */
+.tm-tr:nth-child(even) { background: var(--background-soft); }
+
+.tm-td {
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+
+.tm-td--tema {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tm-td--dias {
+  padding: 6px;
+}
+
+/* ── Botón eliminar en fila ── */
+.tm-delete {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-white);
+  border: 2px solid var(--primary-blue);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tm-delete:hover { background: #e8f0fe; }
+
+/* ── Info del tema ── */
+.tm-tema {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tm-tema__titulo {
+  font: var(--text-body-second);
+  color: var(--text-main);
+}
+
+.tm-tema__desc {
+  font: var(--text-body-small);
+  color: var(--neutral);
+}
+
+/* ── Celdas de días en fila ── */
+.tm-dias {
+  display: flex;
+  gap: 3px;
+}
+
+/* ── Input numérico en celda ── */
+.tm-input {
+  width: 52px;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: var(--text-body-small);
+  text-align: center;
+}
+
+/* ── Texto numérico ── */
+.tm-num {
+  font: var(--text-body-small);
+  color: var(--text-main);
+}

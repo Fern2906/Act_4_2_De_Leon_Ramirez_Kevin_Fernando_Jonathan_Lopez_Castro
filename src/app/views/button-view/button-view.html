@@ -1,4 +1,330 @@
 <div class="view">
+  <h1 class="view__title">Modales</h1>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Abrir ejemplos</h2>
+    <div class="view__row">
+      <app-button type="secundario" label="Abrir modal simple" (click)="abrirModal('simple')" />
+      <app-button type="secundario" label="Abrir modal amplio" (click)="abrirModal('amplio')" />
+      <app-button type="secundario" label="Abrir modal lateral" (click)="abrirModal('lateral')" />
+      <app-button type="secundario" label="Abrir modal mini" (click)="abrirModal('mini')" />
+      <app-button type="secundario" label="Abrir modal compacto" (click)="abrirModal('compacto')" />
+      <app-button type="secundario" label="Abrir modal medio" (click)="abrirModal('medio')" />
+    </div>
+  </section>
+
+  <!-- Variante 1: columna simple + fila 2 campos -->
+  <section class="view__section">
+    
+    <div class="view__row">
+      <app-modal titulo="Texto principal" [visible]="modalSimpleAbierto" (cerrar)="cerrarModal('simple')">
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- Variante 2: 4 dropdowns + texto/fecha/texto -->
+  <section class="view__section">
+    
+    <div class="view__row">
+      <app-modal titulo="Texto principal" [visible]="modalAmplioAbierto" (cerrar)="cerrarModal('amplio')">
+        <div class="modal-fila modal-fila--4col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 2" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="numero" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 2" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--3col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="fecha" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- Variante 3: columna dropdown + 2 filas mixtas + campo fecha + texto -->
+  <section class="view__section">
+    
+    <div class="view__row">
+      <app-modal titulo="Texto principal" [visible]="modalLateralAbierto" (cerrar)="cerrarModal('lateral')">
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="numero" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="fecha" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- Variante 4: mini 2 filas -->
+  <section class="view__section">
+    <div class="view__row">
+      <app-modal titulo="Texto principal" [visible]="modalMiniAbierto" (cerrar)="cerrarModal('mini')">
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- Variante 5: compacto 1 columna -->
+  <section class="view__section">
+    <div class="view__row">
+      <app-modal titulo="Texto principal" [visible]="modalCompactoAbierto" (cerrar)="cerrarModal('compacto')">
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="numero" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="fecha" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- Variante 6: medio 4 + 3 columnas -->
+  <section class="view__section">
+    <div class="view__row">
+      <app-modal titulo="Texto principal" [visible]="modalMedioAbierto" (cerrar)="cerrarModal('medio')">
+        <div class="modal-fila modal-fila--4col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="numero" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--3col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="fecha" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+</div>
+
+<div class="view">
+  <h1 class="view__title">Cards</h1>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Simple</h2>
+    <div class="view__row">
+      <app-card subtitulo="Texto subtitulo" titulo="Texto principal" />
+    </div>
+  </section>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Con etiqueta (derecha)</h2>
+    <div class="view__row">
+      <app-card
+        subtitulo="Texto subtitulo"
+        titulo="Texto principal"
+        [etiqueta]="{ estado: 'clase', porcentaje: 'value%' }" />
+    </div>
+  </section>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Con múltiples etiquetas</h2>
+    <div class="view__row">
+      <app-card
+        titulo="Texto principal"
+        [etiquetas]="[
+          { estado: 'clase', porcentaje: 'value%' },
+          { estado: 'examen', porcentaje: 'value%' },
+          { estado: 'atraso', porcentaje: 'value%' },
+          { estado: 'completado', porcentaje: 'value%' }
+        ]" />
+    </div>
+  </section>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Con búsqueda</h2>
+    <div class="view__row">
+      <app-card
+        subtitulo="Texto subtitulo"
+        titulo="Texto principal"
+        [mostrarBusqueda]="true" />
+    </div>
+  </section>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Con dropdown</h2>
+    <div class="view__row">
+      <app-card
+        subtitulo="Texto subtitulo"
+        titulo="Texto principal"
+        [mostrarDropdown]="true"
+        dropdownLabel="Seleccionar 2" />
+    </div>
+  </section>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Con botones</h2>
+    <div class="view__row">
+      <app-card
+        subtitulo="Texto subtitulo"
+        titulo="Texto principal"
+        [botones]="[{ label: 'Button', type: 'secundario' }, { label: 'Button', type: 'primario' }]" />
+    </div>
+  </section>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Compleja (búsqueda + etiqueta + botones)</h2>
+    <div class="view__row">
+      <app-card
+        subtitulo="Texto subtitulo"
+        titulo="Texto principal"
+        [mostrarBusqueda]="true"
+        [etiqueta]="{ estado: 'completado', porcentaje: 'value%' }"
+        [botones]="[{ label: 'Button', type: 'secundario' }, { label: 'Button', type: 'primario' }]" />
+    </div>
+  </section>
+</div>
+
+<div class="view">
+  <h1 class="view__title">Barra de Búsqueda</h1>
+
+  <section class="view__section">
+    <app-barra-busqueda />
+  </section>
+</div>
+
+<div class="view">
   <h1 class="view__title">Botones</h1>
 
   <!-- ── TIPOS ── -->
@@ -112,6 +438,24 @@
       </app-dropdown>
 
     </div>
+  </section>
+</div>
+
+<div class="view">
+  <h1 class="view__title">Tabla Mes</h1>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Ejemplo de tabla mensual</h2>
+    <app-tabla-mes />
+  </section>
+</div>
+
+<div class="view">
+  <h1 class="view__title">Celdas</h1>
+
+  <section class="view__section">
+    <h2 class="view__subtitle">Tipos</h2>
+    <app-celdas />
   </section>
 </div>
 

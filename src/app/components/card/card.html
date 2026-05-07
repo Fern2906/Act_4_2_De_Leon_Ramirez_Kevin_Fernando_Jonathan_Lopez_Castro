@@ -1,0 +1,55 @@
+<div class="card">
+
+  <!-- ── Cabecera ── -->
+  <div class="card__header">
+    <div class="card__header-texto">
+      @if (subtitulo) {
+        <span class="card__subtitulo">{{ subtitulo }}</span>
+      }
+      @if (titulo) {
+        <span class="card__titulo">{{ titulo }}</span>
+      }
+    </div>
+
+    <!-- Etiqueta única a la derecha -->
+    @if (etiqueta) {
+      <app-etiqueta [estados]="etiqueta.estado" [porcentaje]="etiqueta.porcentaje" />
+    }
+
+    <!-- Dropdown a la derecha -->
+    @if (mostrarDropdown) {
+      <app-dropdown [label]="dropdownLabel" [items]="dropdownItems" tamano="mediano" />
+    }
+  </div>
+
+  <!-- ── Etiquetas bajo el header ── -->
+  @if (etiquetas.length > 0) {
+    <div class="card__etiquetas">
+      @for (e of etiquetas; track $index) {
+        <app-etiqueta [estados]="e.estado" [porcentaje]="e.porcentaje" />
+      }
+    </div>
+  }
+
+  <!-- ── Barra de búsqueda ── -->
+  @if (mostrarBusqueda) {
+    <div class="card__busqueda">
+      <app-barra-busqueda [placeholder]="placeholderBusqueda" />
+    </div>
+  }
+
+  <!-- ── Contenido personalizado (ng-content) ── -->
+  <div class="card__body">
+    <ng-content />
+  </div>
+
+  <!-- ── Pie con botones ── -->
+  @if (botones.length > 0) {
+    <div class="card__footer">
+      @for (btn of botones; track $index) {
+        <app-button [label]="btn.label" [type]="btn.type ?? 'secundario'" size="desktop" />
+      }
+    </div>
+  }
+
+</div>

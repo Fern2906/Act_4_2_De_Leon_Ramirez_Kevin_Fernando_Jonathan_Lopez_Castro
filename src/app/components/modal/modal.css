@@ -1,0 +1,84 @@
+/* ── Overlay ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ── Panel del modal ── */
+.modal {
+  background: var(--background-white);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 320px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Cabecera ── */
+.modal__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal__header-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.modal__titulo {
+  font: var(--text-body-second);
+  color: var(--primary-blue);
+}
+
+/* ── Cuerpo ── */
+.modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Clases utilitarias para campos dentro del modal ── */
+:host .modal-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+:host .modal-campo__label {
+  font: var(--text-body-small);
+  color: var(--text-main);
+}
+
+:host .modal-fila {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+:host .modal-fila--1col { flex-direction: column; }
+:host .modal-fila--2col > * { flex: 1 1 calc(50% - 6px); min-width: 0; }
+:host .modal-fila--3col > * { flex: 1 1 calc(33% - 8px); min-width: 0; }
+:host .modal-fila--4col > * { flex: 1 1 calc(25% - 9px); min-width: 0; }
+
+/* ── Pie ── */
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
