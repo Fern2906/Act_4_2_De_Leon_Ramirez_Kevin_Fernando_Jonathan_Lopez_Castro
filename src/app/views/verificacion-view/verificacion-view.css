@@ -217,25 +217,59 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-  }
+}
 
   .hero,
   .datos,
   .contenido {
     margin-left: 14px;
     margin-right: 14px;
-  }
+}
 
   .datos {
     grid-template-columns: 1fr;
-  }
+}
 
   .datos__card--wide {
     grid-column: auto;
-  }
+}
 
   .acciones,
   .exportar {
     flex-wrap: wrap;
   }
+}
+
+/* ── Vista móvil: campos del profesor ── */
+
+.contenido--mobile {
+  margin: 12px 14px 20px;
+}
+
+.panel-principal-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profesor__field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profesor__field:last-child {
+  border-bottom: none;
+}
+
+.profesor__label {
+  font: var(--text-heading-h2-semi);
+  color: var(--primary-blue);
+}
+
+.profesor__value {
+  font: var(--text-body-medium);
+  color: #626d81;
 }

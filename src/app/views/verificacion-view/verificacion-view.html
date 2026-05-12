@@ -13,6 +13,7 @@
       [showIcon]="true" />
   </header>
 
+  @if (!isMobile()) {
   <section class="hero">
     <p class="hero__org">Universidad Autónoma de San Luis Potosí</p>
     <h1 class="hero__title">FORMA AAAE01 - Verificación del Cumplimiento del Programa</h1>
@@ -43,7 +44,9 @@
         [items]="['AAAE01 - 01 - 07:00', 'AAAE01 - 02 - 09:00', 'AAAE01 - 03 - 11:00']" />
     </article>
   </section>
+  } <!-- end @if (!isMobile()) -->
 
+  @if (!isMobile()) {
   <main class="contenido">
     <section class="panel-principal">
       <div class="acciones">
@@ -92,4 +95,48 @@
       </section>
     </aside>
   </main>
+  } <!-- end @if (!isMobile()) -->
+
+  @if (isMobile()) {
+  <main class="contenido--mobile">
+    <div class="panel-principal-mobile">
+
+      <app-card
+        titulo="Leyenda"
+        [etiquetas]="[
+          {estado: 'clase', porcentaje: 'Clase'},
+          {estado: 'examen', porcentaje: 'Examen'},
+          {estado: 'atraso', porcentaje: 'Atraso'},
+          {estado: 'administrativa', porcentaje: 'Administrativa'}
+        ]" />
+
+      <app-card
+        [botones]="[
+          {label: 'Añadir tema', type: 'secundario'},
+          {label: 'Registrar sesión', type: 'primario'}
+        ]">
+        <div class="profesor__field">
+          <span class="profesor__label">PROFESOR</span>
+          <span class="profesor__value">Nombre</span>
+        </div>
+        <div class="profesor__field">
+          <span class="profesor__label">CICLO ESCOLAR</span>
+          <span class="profesor__value">2025-2026</span>
+        </div>
+        <div class="profesor__field">
+          <span class="profesor__label">Área</span>
+          <span class="profesor__value">Ciencias de la Computación</span>
+        </div>
+        <div class="profesor__field">
+          <span class="profesor__label">Materia - Grupo - Horario</span>
+          <span class="profesor__value">Matemáticas Discretas II -</span>
+          <span class="profesor__value">Grupo 3 - L,M,J,V</span>
+          <span class="profesor__value">10:00-11:00</span>
+        </div>
+      </app-card>
+
+    </div>
+  </main>
+  } <!-- end @if (isMobile()) -->
+
 </div>
