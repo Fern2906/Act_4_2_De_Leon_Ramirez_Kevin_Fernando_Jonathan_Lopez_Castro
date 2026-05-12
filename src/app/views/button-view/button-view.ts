@@ -2,16 +2,12 @@ import { Component } from '@angular/core';
 import { Button } from '../../components/button/button';
 import { Etiqueta } from '../../components/etiqueta/etiqueta';
 import { Dropdown } from '../../components/dropdown/dropdown';
-<<<<<<< HEAD
 import { Inputs } from '../../components/inputs/inputs';
-=======
-import { Inputs } from '../../inputs/inputs';
 import { Celdas } from '../../components/celdas/celdas';
 import { TablaMes } from '../../components/tabla-mes/tabla-mes';
 import { BarraBusqueda } from '../../components/barra-busqueda/barra-busqueda';
 import { Card } from '../../components/card/card';
 import { Modal } from '../../components/modal/modal';
->>>>>>> 8b2fd04e36d21532e454d9cc49d48990abf3e0f5
 
 @Component({
   selector: 'app-button-view',

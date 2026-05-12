@@ -1,7 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Button } from '../button/button';
-import { Inputs } from '../../inputs/inputs';
-import { Dropdown } from '../dropdown/dropdown';
 
 export interface ModalBoton {
   label: string;
@@ -10,7 +8,7 @@ export interface ModalBoton {
 
 @Component({
   selector: 'app-modal',
-  imports: [Button, Inputs, Dropdown],
+  imports: [Button],
   templateUrl: './modal.html',
   styleUrl: './modal.css',
 })

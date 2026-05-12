@@ -126,20 +126,36 @@
     </div>
   </section>
 
-  <!-- Variante 4: mini 2 filas -->
+  <!-- Variante 4: formato 4 + 3 columnas -->
   <section class="view__section">
     <div class="view__row">
       <app-modal titulo="Texto principal" [visible]="modalMiniAbierto" (cerrar)="cerrarModal('mini')">
-        <div class="modal-fila modal-fila--1col">
+        <div class="modal-fila modal-fila--4col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 2" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 3" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="numero" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre campo</span>
+            <app-dropdown label="Seleccionar 2" [items]="['Op 1','Op 2']" tamano="pequeno" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--3col">
           <div class="modal-campo">
             <span class="modal-campo__label">Nombre campo</span>
             <app-inputs tipo="texto" />
           </div>
-        </div>
-        <div class="modal-fila modal-fila--2col">
           <div class="modal-campo">
             <span class="modal-campo__label">Nombre campo</span>
-            <app-inputs tipo="texto" />
+            <app-inputs tipo="fecha" />
           </div>
           <div class="modal-campo">
             <span class="modal-campo__label">Nombre campo</span>
