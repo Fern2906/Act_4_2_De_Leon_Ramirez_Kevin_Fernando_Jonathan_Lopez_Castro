@@ -23,7 +23,7 @@
 .tm-celda {
   width: 22px;
   height: 22px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 3px;
   background: var(--background-white);
   flex-shrink: 0;
@@ -43,7 +43,7 @@
 
 /* ── Encabezados ── */
 .tm-th {
-  background: var(--encabezado, #f8f9fa);
+  background: var(--encabezado);
   border: 1px solid var(--border);
   padding: 6px 8px;
   white-space: nowrap;
@@ -102,11 +102,12 @@
   justify-content: center;
   background: var(--background-white);
   border: 2px solid var(--primary-blue);
+  color: var(--primary-blue);
   border-radius: 6px;
   cursor: pointer;
 }
 
-.tm-delete:hover { background: #e8f0fe; }
+.tm-delete:hover { background: var(--botonperfil); }
 
 /* ── Info del tema ── */
 .tm-tema {
@@ -145,4 +146,31 @@
 .tm-num {
   font: var(--text-body-small);
   color: var(--text-main);
+}
+
+/* ── Ajustes Responsivos con @media ── */
+@media (max-width: 1024px) {
+  .tm-th--tema {
+    min-width: 120px;
+  }
+  .tm-input {
+    width: 46px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tm-celda {
+    width: 28px;
+    height: 28px; /* Touch target más grande */
+  }
+  
+  .tm-input {
+    width: 60px; /* Más ancho para facilitar tap */
+    padding: 6px 8px;
+  }
+  
+  .tm-delete {
+    width: 36px;
+    height: 36px;
+  }
 }

@@ -27,27 +27,29 @@
 /* ─── Primario ─── */
 .btn--primario {
   background-color: var(--primary-blue);
-  color: white;
+  color: var(--background-white);
 }
 
 .btn--primario:hover {
-  background-color: #002A78;
+  background-color: var(--blue-dark);
 }
 
 /* ─── Secundario ─── */
 .btn--secundario {
   background-color: var(--background-soft);
   border: 2px solid var(--blue-dark);
+  color: var(--blue-dark);
 }
 
 .btn--secundario:hover {
-  background-color: #DEDFDF;
-  border: 2px solid #0C1926;
+  background-color: var(--botonperfil);
+  border: 2px solid var(--text-main);
 }
 
 /* ─── Éxito ─── */
 .btn--exito {
   background-color: var(--success);
+  color: var(--background-white);
 }
 
 .btn--exito:hover {
@@ -57,6 +59,7 @@
 /* ─── Alerta ─── */
 .btn--alerta {
   background-color: var(--danger);
+  color: var(--background-white);
 }
 
 .btn--alerta:hover {
@@ -67,21 +70,22 @@
 .btn--icono {
   background-color: var(--background-soft);
   border: 2px solid var(--blue-dark);
+  color: var(--blue-dark);
 }
 
 .btn--icono:hover {
-  background-color: #B8B8B8;
+  background-color: var(--border);
 }
 
 /* ─── Usuario ─── */
 .btn--usuario {
-  background-color: #364C93;
-  border: 1px solid #8DA0BF;
-  color: white;
+  background-color: var(--primary-blue);
+  border: 1px solid var(--border);
+  color: var(--background-white);
 }
 
 .btn--usuario:hover {
-  background-color: #1135AC;
+  background-color: var(--blue-dark);
 }
 
 

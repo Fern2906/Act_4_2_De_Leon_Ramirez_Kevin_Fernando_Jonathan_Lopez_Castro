@@ -7,11 +7,25 @@
   border-radius: 999px;
   background: var(--background-white);
   width: 280px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .barra {
+    width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .barra {
+    width: 100%;
+  }
 }
 
 .barra__icono {
   flex-shrink: 0;
   display: block;
+  color: var(--neutral);
 }
 
 .barra__input {

@@ -6,29 +6,25 @@
     flex-shrink: 0;
     align-self: stretch;
     border-radius: 6px;
-    border: 1px solid #000;
-    font: var(--text-body-regular)
+    border: 1px solid var(--border);
+    font: var(--text-body-regular);
+    box-sizing: border-box;
 }
 
 .select--default {
-    background: var(--background-soft, #F8FAFC);
+    background: var(--background-soft);
 }
 
 .select--seleccionado {
-    background: #BABABA;
+    background: var(--botonperfil);
 }
 
 .select--default ::selection{
-    background: #BABABA;
-}
-
-.select--grande {
-    display: flex;
+    background: var(--botonperfil);
 }
 
 .select--mediano {
     width: 300px;
-
 }
 
 .select--pequeno {
@@ -44,7 +40,7 @@
     flex-shrink: 0;
     align-self: stretch;
     border-radius: 6px;
-    border: 1px solid #000;
+    border: 1px solid var(--border);
 }
 
 .option--grande {
@@ -53,9 +49,30 @@
 
 .option--mediano {
     width: 300px;
-
 }
 
 .option--pequeno {
     width: 200px;
+}
+
+/* ── Pantallas Medianas (Tablet) ── */
+@media (max-width: 1024px) {
+    .select--mediano,
+    .option--mediano {
+        width: 260px;
+    }
+    .select--pequeno,
+    .option--pequeno {
+        width: 180px;
+    }
+}
+
+/* ── Pantallas Pequeñas (Móvil) ── */
+@media (max-width: 768px) {
+    .select--mediano,
+    .select--pequeno,
+    .option--mediano,
+    .option--pequeno {
+        width: 100%;
+    }
 }

@@ -1,13 +1,13 @@
 .verificacion {
   min-height: 100vh;
-  background: #ffffff;
+  background: var(--background-white);
   color: var(--text-main);
   font-family: var(--font-family);
 }
 
 .topbar {
   background: var(--primary-blue);
-  color: #fff;
+  color: var(--background-white);
   padding: 20px 28px;
   display: flex;
   align-items: center;
@@ -30,16 +30,16 @@
 
 .hero {
   margin: 16px 28px 10px;
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--background-white);
   padding: 14px 20px;
 }
 
 .hero__org {
   margin: 0;
   font: var(--text-heading-h2-semi);
-  color: #697387;
+  color: var(--neutral);
 }
 
 .hero__title {
@@ -50,7 +50,7 @@
 
 .datos {
   margin: 0 28px;
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 14px;
   display: grid;
@@ -59,9 +59,9 @@
 }
 
 .datos__card {
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--background-white);
   padding: 10px 12px;
 }
 
@@ -78,14 +78,14 @@
 .datos__card p {
   margin: 8px 0 0;
   font: var(--text-body-medium);
-  color: #626d81;
+  color: var(--neutral);
 }
 
 .datos__selector {
   margin-top: 8px;
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  background: #eceef2;
+  background: var(--background-soft);
   padding: 8px 10px;
   font: var(--text-body-regular);
   min-width: 220px;
@@ -100,9 +100,9 @@
 }
 
 .panel-principal {
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--background-white);
   padding: 10px;
 }
 
@@ -113,8 +113,8 @@
 }
 
 .tabla-wrapper {
-  background: #ffffff;
-  border: 1px solid #8b8d90;
+  background: var(--background-white);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 6px;
 }
@@ -129,9 +129,9 @@
 .leyenda {
   margin-top: 14px;
   max-width: 330px;
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--background-white);
   padding: 10px 12px;
 }
 
@@ -152,9 +152,9 @@
 }
 
 .sidebar__card {
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--background-white);
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -169,7 +169,7 @@
 
 .sidebar__subtitle {
   margin: 0;
-  color: #626d81;
+  color: var(--neutral);
   font: var(--text-heading-h2-semi);
 }
 
@@ -180,9 +180,9 @@
 }
 
 .tema {
-  border: 1px solid #8b8d90;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--background-white);
   padding: 10px;
   display: flex;
   align-items: center;
@@ -198,7 +198,7 @@
 
 .tema p {
   margin: 8px 0 0;
-  color: #626d81;
+  color: var(--neutral);
   font: var(--text-body-medium);
 }
 
@@ -206,37 +206,45 @@
   .contenido {
     grid-template-columns: 1fr;
   }
+  
+  .datos {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   .sidebar {
     order: -1;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-}
+  }
 
   .hero,
   .datos,
   .contenido {
     margin-left: 14px;
     margin-right: 14px;
-}
+  }
 
   .datos {
     grid-template-columns: 1fr;
-}
+  }
 
   .datos__card--wide {
     grid-column: auto;
-}
+  }
 
   .acciones,
   .exportar {
     flex-wrap: wrap;
+  }
+  
+  .leyenda {
+    max-width: 100%;
   }
 }
 
@@ -257,7 +265,7 @@
   flex-direction: column;
   gap: 2px;
   padding: 8px 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border);
 }
 
 .profesor__field:last-child {
@@ -271,5 +279,5 @@
 
 .profesor__value {
   font: var(--text-body-medium);
-  color: #626d81;
+  color: var(--neutral);
 }

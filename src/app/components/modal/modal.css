@@ -71,8 +71,23 @@
 
 :host .modal-fila--1col { flex-direction: column; }
 :host .modal-fila--2col > * { flex: 1 1 calc(50% - 6px); min-width: 0; }
-:host .modal-fila--3col > * { flex: 1 1 calc(33% - 8px); min-width: 0; }
+:host .modal-fila--3col > * { flex: 1 1 calc(33.333% - 8px); min-width: 0; }
 :host .modal-fila--4col > * { flex: 1 1 calc(25% - 9px); min-width: 0; }
+
+@media (max-width: 768px) {
+  :host .modal-fila {
+    flex-direction: column;
+  }
+  :host .modal-fila > * {
+    flex: 1 1 100% !important;
+  }
+  .modal {
+    min-width: 100%;
+    border-radius: 0;
+    min-height: 100vh;
+    border: none;
+  }
+}
 
 /* ── Pie ── */
 .modal__footer {
