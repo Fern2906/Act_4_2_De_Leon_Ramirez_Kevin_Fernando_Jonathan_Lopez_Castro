@@ -1,55 +1,177 @@
-<div class="card">
-
-  <!-- ── Cabecera ── -->
-  <div class="card__header">
-    <div class="card__header-texto">
-      @if (subtitulo) {
-        <span class="card__subtitulo">{{ subtitulo }}</span>
-      }
-      @if (titulo) {
-        <span class="card__titulo">{{ titulo }}</span>
-      }
-    </div>
-
-    <!-- Etiqueta única a la derecha -->
-    @if (etiqueta) {
-      <app-etiqueta [estados]="etiqueta.estado" [porcentaje]="etiqueta.porcentaje" />
+<div [class]="claseHost()">
+  @switch (tipo) {
+    @case ('Principal') {
+      <div class="card__principal">
+        <div class="card__principal-texto">
+          @if (subtitulo) {
+            <p class="card__principal-sub">{{ subtitulo }}</p>
+          }
+          @if (titulo) {
+            <p class="card__principal-tit">{{ titulo }}</p>
+          }
+        </div>
+        @if (tamano !== 'Desktop' || mostrarDropdown) {
+          <div class="card__principal-acciones">
+            @if (tamano !== 'Desktop') {
+              <p class="card__dropdown-hint">{{ dropdownHint }}</p>
+            }
+            <app-dropdown
+              [label]="dropdownLabel"
+              [items]="dropdownItems"
+              [tamano]="tamanoDropdown()"
+              estado="default" />
+          </div>
+        }
+      </div>
     }
 
-    <!-- Dropdown a la derecha -->
-    @if (mostrarDropdown) {
-      <app-dropdown [label]="dropdownLabel" [items]="dropdownItems" tamano="mediano" />
+    @case ('backlog') {
+      <div class="card__backlog">
+        @if (titulo) {
+          <p class="card__backlog-titulo">{{ titulo }}</p>
+        }
+        @if (subtitulo) {
+          <p class="card__backlog-subtitulo">{{ subtitulo }}</p>
+        }
+        <div class="card__backlog-etiqueta">
+          <app-etiqueta
+            [estados]="etiquetaBacklogDefault().estado"
+            [porcentaje]="etiquetaBacklogDefault().porcentaje" />
+        </div>
+        <div class="card__backlog-busqueda">
+          <app-barra-busqueda
+            [placeholder]="placeholderBusqueda"
+            (busqueda)="busqueda.emit($event)" />
+        </div>
+        <div class="card__body card__body--backlog">
+          <ng-content />
+        </div>
+      </div>
     }
-  </div>
 
-  <!-- ── Etiquetas bajo el header ── -->
-  @if (etiquetas.length > 0) {
-    <div class="card__etiquetas">
-      @for (e of etiquetas; track $index) {
-        <app-etiqueta [estados]="e.estado" [porcentaje]="e.porcentaje" />
+    @case ('Leyenda') {
+      <div class="card__leyenda">
+        @if (titulo) {
+          <p class="card__leyenda-titulo">{{ titulo }}</p>
+        }
+        <div class="card__leyenda-etiquetas">
+          @for (e of etiquetas.length ? etiquetas : leyendaDefault; track $index) {
+            <app-etiqueta [estados]="e.estado" [porcentaje]="e.porcentaje" />
+          }
+        </div>
+      </div>
+    }
+
+    @case ('backlogCard') {
+      <div class="card__backlog-card">
+        <div class="card__backlog-card-texto">
+          @if (titulo) {
+            <p class="card__backlog-card-titulo">{{ titulo }}</p>
+          }
+          @if (subtitulo) {
+            <p class="card__backlog-card-subtitulo">{{ subtitulo }}</p>
+          }
+        </div>
+        @if (etiqueta) {
+          <app-etiqueta [estados]="etiqueta.estado" [porcentaje]="etiqueta.porcentaje" />
+        }
+        <ng-content />
+      </div>
+    }
+
+    @case ('TablaCard') {
+      <div class="card__tabla">
+        <div class="card__tabla-body">
+          @if (filasTabla) {
+            <app-tabla-mes [filas]="filasTabla" [mostrarMolecula]="mostrarMoleculaTabla" />
+          } @else {
+            <app-tabla-mes [mostrarMolecula]="mostrarMoleculaTabla" />
+          }
+        </div>
+        @if (botones.length) {
+          <div class="card__tabla-footer">
+            @for (btn of botones; track $index) {
+              <app-button
+                [label]="btn.label"
+                [type]="btn.type ?? 'secundario'"
+                [size]="tamanoBoton()"
+                [icon]="btn.icon ?? (btn.type === 'primario' ? 'Icono_pdf' : 'Icono_excel')"
+                [showIcon]="true" />
+            }
+          </div>
+        }
+      </div>
+    }
+
+    @case ('texto') {
+      <div class="card__texto">
+        @if (titulo) {
+          <p class="card__texto-titulo">{{ titulo }}</p>
+        }
+        @if (subtitulo) {
+          <p class="card__texto-subtitulo">{{ subtitulo }}</p>
+        }
+        @if (lineasTexto.length) {
+          <div class="card__texto-lista">
+            @for (linea of lineasTexto; track $index) {
+              <p class="card__texto-linea">{{ linea }}</p>
+            }
+          </div>
+        }
+        <ng-content />
+      </div>
+    }
+
+    @default {
+      <div class="card__header">
+        <div class="card__header-texto">
+          @if (subtitulo) {
+            <span class="card__subtitulo">{{ subtitulo }}</span>
+          }
+          @if (titulo) {
+            <span class="card__titulo">{{ titulo }}</span>
+          }
+        </div>
+        @if (etiqueta) {
+          <app-etiqueta [estados]="etiqueta.estado" [porcentaje]="etiqueta.porcentaje" />
+        }
+        @if (mostrarDropdown) {
+          <app-dropdown [label]="dropdownLabel" [items]="dropdownItems" tamano="mediano" />
+        }
+      </div>
+
+      @if (etiquetas.length > 0) {
+        <div class="card__etiquetas">
+          @for (e of etiquetas; track $index) {
+            <app-etiqueta [estados]="e.estado" [porcentaje]="e.porcentaje" />
+          }
+        </div>
       }
-    </div>
-  }
 
-  <!-- ── Barra de búsqueda ── -->
-  @if (mostrarBusqueda) {
-    <div class="card__busqueda">
-      <app-barra-busqueda [placeholder]="placeholderBusqueda" />
-    </div>
-  }
-
-  <!-- ── Contenido personalizado (ng-content) ── -->
-  <div class="card__body">
-    <ng-content />
-  </div>
-
-  <!-- ── Pie con botones ── -->
-  @if (botones.length > 0) {
-    <div class="card__footer">
-      @for (btn of botones; track $index) {
-        <app-button [label]="btn.label" [type]="btn.type ?? 'secundario'" size="desktop" />
+      @if (mostrarBusqueda) {
+        <div class="card__busqueda">
+          <app-barra-busqueda
+            [placeholder]="placeholderBusqueda"
+            (busqueda)="busqueda.emit($event)" />
+        </div>
       }
-    </div>
-  }
 
+      <div class="card__body">
+        <ng-content />
+      </div>
+
+      @if (botones.length > 0) {
+        <div class="card__footer">
+          @for (btn of botones; track $index) {
+            <app-button
+              [label]="btn.label"
+              [type]="btn.type ?? 'secundario'"
+              [size]="tamanoBoton()"
+              [icon]="btn.icon ?? 'Icono_agregar'"
+              [showIcon]="!!btn.icon" />
+          }
+        </div>
+      }
+    }
+  }
 </div>

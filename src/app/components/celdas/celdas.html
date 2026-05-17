@@ -1,45 +1,30 @@
-<div class="celdas">
-  @for (item of items; track $index) {
-    <div class="celdas__fila">
-
-      <!-- Inputs de texto -->
-      <input class="celdas__input" type="text" [value]="item.texto1" />
-      <input class="celdas__input" type="text" [value]="item.texto2" />
-
-      <!-- Selector de mes -->
-      <div class="celdas__mes">
-        <span>{{ item.mes }}</span>
-        <button class="celdas__mes-nav" type="button">
-          <app-icon name="Chevron left" [size]="14" />
+<div [class]="claseHost()">
+  @switch (tipo) {
+    @case ('Texto') {
+      <span class="celda__texto">{{ texto }}</span>
+    }
+    @case ('Mes') {
+      <span class="celda__texto">{{ texto }}</span>
+      <div class="celda__mes-nav">
+        <button class="celda__mes-btn" type="button" (click)="mesAnterior.emit()">
+          <app-icon name="Chevron left" [size]="flechaTamano[tamano]" />
         </button>
-        <button class="celdas__mes-nav" type="button">
-          <app-icon name="Chevron right" [size]="14" />
+        <button class="celda__mes-btn" type="button" (click)="mesSiguiente.emit()">
+          <app-icon name="Chevron right" [size]="flechaTamano[tamano]" />
         </button>
       </div>
-
-      <!-- Colores seleccionables -->
-      <div class="celdas__colores">
-        @for (color of colores; track color) {
-          <button
-            type="button"
-            class="celdas__color celdas__color--{{ color }}"
-            [class.celdas__color--activo]="item.colorSeleccionado === color"
-            (click)="seleccionarColor(item, color)">
-          </button>
-        }
-      </div>
-
-      <!-- Botón eliminar -->
-      <button class="celdas__delete" type="button">
-        <app-icon name="Icono_trash" [size]="20" />
+    }
+    @case ('Boton') {
+      <button class="celda__boton" type="button" (click)="eliminar.emit()">
+        <app-icon name="Icono_trash" [size]="iconoTrashTamano[tamano]" />
       </button>
-
-      <!-- Información -->
-      <div class="celdas__info">
-        <span class="celdas__info-titulo">{{ item.titulo }}</span>
-        <span class="celdas__info-desc">{{ item.descripcion }}</span>
-      </div>
-
-    </div>
+    }
+    @case ('Tema') {
+      <p class="celda__titulo">{{ titulo }}</p>
+      <p class="celda__descripcion">{{ descripcion }}</p>
+    }
+    @case ('Vacía') {
+      <span class="celda__vacia" aria-hidden="true"></span>
+    }
   }
 </div>

@@ -1,0 +1,65 @@
+<div class="modal-showcase">
+  @for (v of variantes; track v.tipo + v.tamano) {
+    <article class="modal-showcase__item">
+      <h3 class="modal-showcase__label">{{ v.tipo }} — {{ v.tamano }}</h3>
+      <app-modal
+        [tipo]="v.tipo"
+        [tamano]="v.tamano"
+        titulo="Texto principal"
+        [visible]="true"
+        [inline]="true">
+        @if (v.tipo === 'Tema') {
+          <div class="modal-fila modal-fila--full">
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-inputs [tipo]="'texto'" [tamano]="tamanoInput(v.tamano)" />
+            </div>
+          </div>
+          <div class="modal-fila modal-fila--2col">
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-inputs tipo="texto" tamano="pequeno" />
+            </div>
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-inputs tipo="texto" tamano="pequeno" />
+            </div>
+          </div>
+        } @else {
+          <div class="modal-fila modal-fila--4col">
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-dropdown label="Seleccionar 2" tamano="pequeno" [items]="['Item', 'Item']" />
+            </div>
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-dropdown label="Seleccionar 3" tamano="pequeno" [items]="['Item', 'Item']" />
+            </div>
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-inputs tipo="numero" tamano="pequeno" />
+            </div>
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-dropdown label="Seleccionar 2" tamano="pequeno" [items]="['Item', 'Item']" />
+            </div>
+          </div>
+          <div class="modal-fila modal-fila--3col">
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-inputs tipo="texto" tamano="pequeno" />
+            </div>
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-inputs tipo="fecha" tamano="pequeno" />
+            </div>
+            <div class="modal-campo">
+              <span class="modal-campo__label">Nombre campo</span>
+              <app-inputs tipo="texto" tamano="pequeno" />
+            </div>
+          </div>
+        }
+      </app-modal>
+    </article>
+  }
+</div>

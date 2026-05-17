@@ -1,1 +1,7 @@
-<span class="icon" [style.width.px]="size" [style.height.px]="size" [innerHTML]="svg"></span>
+<span 
+  class="icon" 
+  [style.width.px]="size" 
+  [style.height.px]="size"
+  [style.-webkit-mask-image]="'url(icons/' + name + '.svg)'"
+  [style.mask-image]="'url(icons/' + name + '.svg)'">
+</span>

@@ -1,77 +1,96 @@
-<!-- ── Molécula/Mes ── -->
-<div class="tm-molecula">
-  <div class="tm-molecula__celdas">
-    @for (d of dias; track $index) {
-      <div class="tm-celda"></div>
-    }
+@if (mostrarMolecula) {
+  <app-molecula-mes />
+}
+
+<div class="tabla-scroll">
+<div class="tabla" role="table">
+  <div class="tabla__fila tabla__fila--encabezado" role="row">
+    <div class="tabla__grupo-izq" role="rowgroup">
+      <div class="tabla__slot tabla__slot--tema-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="TEMA" />
+      </div>
+      <div class="tabla__slot tabla__slot--hp-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="HP" />
+      </div>
+      <div class="tabla__slot tabla__slot--hr-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="HR" />
+      </div>
+    </div>
+    <div class="tabla__slot tabla__slot--mes-h" role="columnheader">
+      <app-celdas
+        tipo="Mes"
+        color="Encabezado"
+        tamano="Desktop"
+        texto="MES"
+        (mesAnterior)="onMesAnterior()"
+        (mesSiguiente)="onMesSiguiente()" />
+    </div>
+    <div class="tabla__grupo-der" role="rowgroup">
+      <div class="tabla__slot tabla__slot--problemas-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Problemas" />
+      </div>
+      <div class="tabla__slot tabla__slot--teoria-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Teoría" />
+      </div>
+      <div class="tabla__slot tabla__slot--trabajos-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Trabajos" />
+      </div>
+      <div class="tabla__slot tabla__slot--tareas-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Tareas" />
+      </div>
+      <div class="tabla__slot tabla__slot--examenes-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Exámenes" />
+      </div>
+      <div class="tabla__slot tabla__slot--pct-h" role="columnheader">
+        <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="%" />
+      </div>
+    </div>
   </div>
+
+  @for (fila of filas; track $index; let last = $last) {
+    <div class="tabla__fila" [class.tabla__fila--ultima]="last" role="row">
+      <div class="tabla__grupo-izq" role="rowgroup">
+        <div class="tabla__slot tabla__slot--tema" role="cell">
+          <div class="tabla__tema-celda">
+            <app-celdas
+              tipo="Tema"
+              tamano="Desktop"
+              [titulo]="fila.titulo"
+              [descripcion]="fila.descripcion" />
+          </div>
+          <app-celdas tipo="Boton" tamano="Desktop" (eliminar)="eliminarTema.emit($index)" />
+        </div>
+        <div class="tabla__slot tabla__slot--hp" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.hp)" />
+        </div>
+        <div class="tabla__slot tabla__slot--hr" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.hr)" />
+        </div>
+      </div>
+      <div class="tabla__slot tabla__slot--mes" role="cell">
+        <app-molecula-mes />
+      </div>
+      <div class="tabla__grupo-der" role="rowgroup">
+        <div class="tabla__slot tabla__slot--problemas" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.problemas)" />
+        </div>
+        <div class="tabla__slot tabla__slot--teoria" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.teoria)" />
+        </div>
+        <div class="tabla__slot tabla__slot--trabajos" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.trabajos)" />
+        </div>
+        <div class="tabla__slot tabla__slot--tareas" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.tareas)" />
+        </div>
+        <div class="tabla__slot tabla__slot--examenes" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.examenes)" />
+        </div>
+        <div class="tabla__slot tabla__slot--pct" role="cell">
+          <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoPorcentaje(fila.porcentaje)" />
+        </div>
+      </div>
+    </div>
+  }
 </div>
-
-<!-- ── Tabla ── -->
-<div class="tm-tabla-wrap">
-
-  <table class="tm-tabla">
-    <thead>
-      <tr>
-        <th class="tm-th tm-th--tema">TEMA</th>
-        <th class="tm-th">HP</th>
-        <th class="tm-th">HR</th>
-        <th class="tm-th tm-th--mes">
-          {{ mesActual }}
-          <button class="tm-nav" type="button" (click)="anteriorMes()">
-            <app-icon name="Chevron left" [size]="12" />
-          </button>
-          <button class="tm-nav" type="button" (click)="siguienteMes()">
-            <app-icon name="Chevron right" [size]="12" />
-          </button>
-        </th>
-        <th class="tm-th">Problemas</th>
-        <th class="tm-th">Teoría</th>
-        <th class="tm-th">Trabajos</th>
-        <th class="tm-th">Tareas</th>
-        <th class="tm-th">Exámenes</th>
-        <th class="tm-th">%</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (fila of filas; track $index) {
-        <tr class="tm-tr">
-          <!-- Tema -->
-          <td class="tm-td tm-td--tema">
-            
-            <div class="tm-tema">
-              <span class="tm-tema__titulo">{{ fila.titulo }}</span>
-              <span class="tm-tema__desc">{{ fila.descripcion }}</span>
-            </div>
-            <button class="tm-delete" type="button">
-              <app-icon name="Icono_trash" [size]="18" />
-            </button>
-          </td>
-          <!-- HP -->
-          <td class="tm-td">
-            <input class="tm-input" type="number" [value]="fila.hp" placeholder="Num" />
-          </td>
-          <!-- HR -->
-          <td class="tm-td">
-            <input class="tm-input" type="number" [value]="fila.hr" placeholder="Num" />
-          </td>
-          <!-- Celdas de días -->
-          <td class="tm-td tm-td--dias">
-            <div class="tm-dias">
-              @for (d of dias; track $index) {
-                <div class="tm-celda"></div>
-              }
-            </div>
-          </td>
-          <!-- Columnas numéricas -->
-          <td class="tm-td"><span class="tm-num">{{ fila.problemas ?? 'Num' }}</span></td>
-          <td class="tm-td"><span class="tm-num">{{ fila.teoria ?? 'Num' }}</span></td>
-          <td class="tm-td"><span class="tm-num">{{ fila.trabajos ?? 'Num' }}</span></td>
-          <td class="tm-td"><span class="tm-num">{{ fila.tareas ?? 'Num' }}</span></td>
-          <td class="tm-td"><span class="tm-num">{{ fila.examenes ?? 'Num' }}</span></td>
-          <td class="tm-td"><span class="tm-num">{{ fila.porcentaje != null ? fila.porcentaje + '%' : 'Num%' }}</span></td>
-        </tr>
-      }
-    </tbody>
-  </table>
 </div>

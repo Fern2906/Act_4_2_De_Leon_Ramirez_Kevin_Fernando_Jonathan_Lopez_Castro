@@ -53,7 +53,7 @@
 }
 
 .btn--exito:hover {
-  background-color: #0C5928;
+  background-color: var(--success-dark);
 }
 
 /* ─── Alerta ─── */
@@ -63,7 +63,7 @@
 }
 
 .btn--alerta:hover {
-  background-color: #FA1818;
+  background-color: var(--danger-bright);
 }
 
 /* ─── Ícono ─── */
@@ -79,13 +79,17 @@
 
 /* ─── Usuario ─── */
 .btn--usuario {
-  background-color: var(--primary-blue);
-  border: 1px solid var(--border);
+  background-color: var(--botonperfil);
+  border: 1px solid var(--boton-perfil-border);
+  border-radius: 50px;
   color: var(--background-white);
+  min-width: var(--btn-min-width-usuario);
+  height: var(--btn-height-usuario);
+  font: var(--text-body-medium);
 }
 
 .btn--usuario:hover {
-  background-color: var(--blue-dark);
+  background-color: var(--primary-blue);
 }
 
 

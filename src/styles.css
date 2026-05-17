@@ -1,30 +1,41 @@
 :root {
-  --primary-blue: #004A98;       
-  --blue-dark: #003B79;
+  /* ── Colores base ── */
+  --primary-blue: #004A98;
+  --blue-dark: #003A78;
   --success: #28a745;
+  --success-dark: #0C5928;
+  --success-text: #003017;
+  --success-light: #BAE8C1;
   --danger: #dc3545;
-  --neutral: #6c757d;
+  --danger-bright: #FA1818;
+  --neutral: #6B7280;
+  --text-muted: var(--neutral);
+  --text-dark: #1F2937;
+  --text-black: #000000;
   --background-white: #ffffff;
-  --background-soft: #f5f7fa;
+  --background-soft: #F8FAFC;
   --border: #dee2e6;
+  --border-strong: #000000;
   --text-main: #212529;
   --warning: #ffc107;
-  --botonperfil: #e0e0e0;
-  --encabezado: #f8f9fa;
+  --botonperfil: #364C93;
+  --boton-perfil-border: #8DA0BF;
+  --encabezado: #f3f4f6;
+  --header-bar: #d9d9d9;
+  --accent-perfil-light: #B8C2E3;
+  --surface-muted: rgba(234, 233, 233, 0.85);
 
+  /* ── Celdas / leyenda ── */
+  --celda-clase: #16a34a;
+  --celda-atraso: #f5c62c;
+  --celda-examen: #ef4444;
+
+  /* ── Overlays y sombras ── */
+  --overlay-backdrop: rgba(0, 0, 0, 0.45);
+  --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.18);
+
+  /* ── Tipografía ── */
   --font-family: 'Open Sans', sans-serif;
-
-  --btn-height-desktop: 48px;
-  --btn-height-tablet: 44px;
-  --btn-height-mobile: 36px;
-
-  --padding-v-desktop: 12px;
-  --padding-h-desktop: 16px;
-
-  --padding-tablet: 12px;
-
-  --padding-v-mobile: 8px;
-  --padding-h-mobile: 12px;
 
   --text-heading-h1:      700 32px/auto var(--font-family);
   --text-heading-h2:      700 24px/auto var(--font-family);
@@ -34,4 +45,80 @@
   --text-body-second:     600 16px/auto var(--font-family);
   --text-body-small:      400 14px/auto var(--font-family);
   --text-label:           600 12px/auto var(--font-family);
+  --text-view-title:      700 28px/auto var(--font-family);
+  --text-view-subtitle:   600 14px/auto var(--font-family);
+
+  /* ── Botones ── */
+  --btn-height-desktop: 48px;
+  --btn-height-tablet: 44px;
+  --btn-height-mobile: 36px;
+  --btn-height-usuario: 57px;
+  --btn-min-width-usuario: 267px;
+
+  /* ── Espaciado ── */
+  --padding-v-desktop: 12px;
+  --padding-h-desktop: 16px;
+  --padding-tablet: 12px;
+  --padding-v-mobile: 8px;
+  --padding-h-mobile: 12px;
+
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+
+  /* ── Bordes y radios ── */
+  --radius-xs: 5px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 15px;
+  --radius-pill: 50px;
+  --radius-round: 999px;
+
+  /* ── Layout ── */
+  --layout-max: 1440px;
+  --layout-sidebar: 354px;
+  --layout-tabla-max: 986px;
+  --layout-tabla-card-max: 1010px;
+  --layout-gap-sm: 7px;
+  --layout-gap-md: 9px;
+  --layout-gap-lg: 15px;
+
+  /* ── Z-index ── */
+  --z-modal: 1000;
+
+  /* ── Breakpoints (referencia) ── */
+  --bp-tablet: 1024px;
+  --bp-layout: 1200px;
+  --bp-mobile: 768px;
+  --bp-mobile-view: 760px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-main);
+  background: var(--background-white);
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
 }

@@ -2,98 +2,205 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--overlay-backdrop);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: var(--z-modal);
+  padding: 16px;
+  box-sizing: border-box;
 }
 
-/* ── Panel del modal ── */
-.modal {
-  background: var(--background-white);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  padding: 24px;
+.modal-backdrop--inline {
+  position: static;
+  background: transparent;
+  padding: 0;
+  z-index: auto;
+  display: block;
+}
+
+/* ── Panel ── */
+.modal__panel {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  min-width: 320px;
-  max-width: 90vw;
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-modal);
+  max-width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+}
+
+.modal-backdrop--inline .modal__panel {
+  box-shadow: none;
+  max-height: none;
+}
+
+/* Tamaños Figma */
+.modal__panel--tipo-tema.modal__panel--tamano-desktop {
+  width: 900px;
+  min-height: 400px;
+}
+
+.modal__panel--tipo-tema.modal__panel--tamano-tablet {
+  width: 581px;
+  min-height: 332px;
+}
+
+.modal__panel--tipo-tema.modal__panel--tamano-mobile {
+  width: 390px;
+  min-height: 332px;
+}
+
+.modal__panel--tipo-sesion.modal__panel--tamano-desktop {
+  width: 1220px;
+  min-height: 400px;
+}
+
+.modal__panel--tipo-sesion.modal__panel--tamano-tablet {
+  width: 980px;
+  min-height: 400px;
+}
+
+.modal__panel--tipo-sesion.modal__panel--tamano-mobile {
+  width: 420px;
+  min-height: 733px;
 }
 
 /* ── Cabecera ── */
 .modal__header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.modal__header-icon {
-  display: flex;
-  align-items: center;
+  position: relative;
   flex-shrink: 0;
 }
 
+.modal__header-bar {
+  height: 60px;
+  background: var(--header-bar);
+}
+
+.modal__panel--tamano-mobile .modal__header-bar {
+  height: 50px;
+}
+
+.modal__header-content {
+  position: absolute;
+  left: 24px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--blue-dark);
+}
+
+.modal__panel--tamano-mobile .modal__header-content {
+  left: 16px;
+  bottom: 8px;
+}
+
 .modal__titulo {
-  font: var(--text-body-second);
-  color: var(--primary-blue);
+  margin: 0;
+  font: 700 24px/1 var(--font-family);
+  color: var(--blue-dark);
 }
 
 /* ── Cuerpo ── */
 .modal__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px 24px 12px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* ── Clases utilitarias para campos dentro del modal ── */
-:host .modal-campo {
+.modal__panel--tamano-mobile .modal__body {
+  padding: 16px;
+}
+
+/* Campos proyectados */
+:host ::ng-deep .modal-campo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
+  min-width: 0;
 }
 
-:host .modal-campo__label {
-  font: var(--text-body-small);
-  color: var(--text-main);
+:host ::ng-deep .modal-campo__label {
+  font: 600 20px/1 var(--font-family);
+  color: var(--text-black);
 }
 
-:host .modal-fila {
+.modal__panel--tamano-mobile :host ::ng-deep .modal-campo__label,
+.modal__panel--tamano-tablet :host ::ng-deep .modal-campo__label {
+  font-size: 16px;
+}
+
+:host ::ng-deep .modal-fila {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-:host .modal-fila--1col { flex-direction: column; }
-:host .modal-fila--2col > * { flex: 1 1 calc(50% - 6px); min-width: 0; }
-:host .modal-fila--3col > * { flex: 1 1 calc(33.333% - 8px); min-width: 0; }
-:host .modal-fila--4col > * { flex: 1 1 calc(25% - 9px); min-width: 0; }
+:host ::ng-deep .modal-fila--1col {
+  flex-direction: column;
+}
 
-@media (max-width: 768px) {
-  :host .modal-fila {
-    flex-direction: column;
-  }
-  :host .modal-fila > * {
-    flex: 1 1 100% !important;
-  }
-  .modal {
-    min-width: 100%;
-    border-radius: 0;
-    min-height: 100vh;
-    border: none;
-  }
+:host ::ng-deep .modal-fila--2col > .modal-campo {
+  flex: 1 1 calc(50% - 6px);
+}
+
+:host ::ng-deep .modal-fila--3col > .modal-campo {
+  flex: 1 1 calc(33.333% - 8px);
+}
+
+:host ::ng-deep .modal-fila--4col > .modal-campo {
+  flex: 1 1 calc(25% - 9px);
+}
+
+:host ::ng-deep .modal-fila--full > .modal-campo {
+  flex: 1 1 100%;
+}
+
+:host ::ng-deep .modal-fila app-inputs,
+:host ::ng-deep .modal-fila app-dropdown,
+:host ::ng-deep .modal-fila .input,
+:host ::ng-deep .modal-fila .select {
+  width: 100%;
+  max-width: 100%;
 }
 
 /* ── Pie ── */
 .modal__footer {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 10px;
-  padding-top: 8px;
-  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  padding: 12px 24px 20px;
+}
+
+.modal__panel--tamano-mobile .modal__footer {
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 12px 16px 20px;
+}
+
+@media (max-width: 768px) {
+  .modal-backdrop:not(.modal-backdrop--inline) .modal__panel {
+    width: 100% !important;
+    min-height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  :host ::ng-deep .modal-fila {
+    flex-direction: column;
+  }
+
+  :host ::ng-deep .modal-fila > .modal-campo {
+    flex: 1 1 100% !important;
+  }
 }
