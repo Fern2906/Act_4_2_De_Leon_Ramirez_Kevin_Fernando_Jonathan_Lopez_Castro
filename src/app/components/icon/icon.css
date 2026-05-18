@@ -1,14 +1,21 @@
 :host {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon {
-    display: flex;
-    width: 24px;
-    height: 24px;
+    display: inline-block;
+    background-color: currentColor; /* Esto permite que el ícono tome el color del texto */
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
 }
 
-/* ── Pantallas Medianas (Tablet) ── */
+/* Mantener tus media queries para responsividad */
 @media (max-width: 1024px) {
     .icon {
         width: 22px;
@@ -16,17 +23,9 @@
     }
 }
 
-/* ── Pantallas Pequeñas (Móvil) ── */
 @media (max-width: 768px) {
     .icon {
         width: 20px;
         height: 20px;
     }
 }
-
-.icon svg {
-    width: 100%;
-    height: 100%;
-    color: currentColor;
-}
-

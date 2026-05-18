@@ -14,129 +14,251 @@
   </header>
 
   @if (!isMobile()) {
-  <section class="hero">
-    <p class="hero__org">Universidad Autónoma de San Luis Potosí</p>
-    <h1 class="hero__title">FORMA AAAE01 - Verificación del Cumplimiento del Programa</h1>
-  </section>
+  <div class="verificacion__body">
+    <!-- Hero ocupa todo el ancho -->
+    <app-card
+      tipo="Principal"
+      tamano="Desktop"
+      subtitulo="Universidad Autónoma de San Luis Potosí"
+    titulo="FORMA AAAE01 - Verificación del Cumplimiento del Programa"
+    class="hero-card" />
 
-  <section class="datos">
-    <article class="datos__card">
-      <h2>PROFESOR</h2>
-      <p>Nombre</p>
-    </article>
+    <div class="layout-principal">
+      <app-card tipo="Leyenda" tamano="Desktop" titulo="Leyenda" class="leyenda-tablet"
+        [etiquetas]="[
+          { estado: 'clase', porcentaje: 'Clase' },
+          { estado: 'examen', porcentaje: 'Examen' },
+          { estado: 'atraso', porcentaje: 'Atraso' },
+          { estado: 'administrativa', porcentaje: 'Administrativa' }
+        ]" />
 
-    <article class="datos__card datos__card--wide">
-      <h2>Área</h2>
-      <p>Área de Ciencias de la Computación</p>
-    </article>
+      <!-- Columna izquierda: datos + acciones + tabla -->
+      <div class="columna-izquierda">
+        <section class="datos">
+          <app-card tipo="texto" tamano="Desktop" titulo="PROFESOR" subtitulo="Nombre" />
+          <app-card tipo="texto" tamano="Desktop" titulo="Área" subtitulo="Área de Ciencias de la Computación" />
+          <app-card tipo="texto" tamano="Desktop" titulo="CICLO ESCOLAR" subtitulo="2025-2026 / II" />
+          <app-card tipo="texto" tamano="Desktop" titulo="Materia - Grupo - Horario">
+            <app-dropdown
+              estado="default"
+              tamano="mediano"
+              label="Seleccionar 2"
+              [items]="['AAAE01 - 01 - 07:00', 'AAAE01 - 02 - 09:00', 'AAAE01 - 03 - 11:00']" />
+          </app-card>
+        </section>
 
-    <article class="datos__card">
-      <h2>CICLO ESCOLAR</h2>
-      <p>2025-2026 / II</p>
-    </article>
-
-    <article class="datos__card datos__card--wide">
-      <h2>Materia - Grupo - Horario</h2>
-      <app-dropdown
-        estado="default"
-        tamano="mediano"
-        label="Seleccionar 2"
-        [items]="['AAAE01 - 01 - 07:00', 'AAAE01 - 02 - 09:00', 'AAAE01 - 03 - 11:00']" />
-    </article>
-  </section>
-  } <!-- end @if (!isMobile()) -->
-
-  @if (!isMobile()) {
-  <main class="contenido">
-    <section class="panel-principal">
-      <div class="acciones">
-        <app-button type="primario" size="desktop" icon="Icono_agregar" label="Registrar sesión" [showIcon]="true" />
-        <app-button type="secundario" size="desktop" icon="Icono_agregar" label="Añadir tema" [showIcon]="true" />
+        <section class="panel-principal">
+          <div class="acciones">
+            <app-button type="primario" size="desktop" icon="Icono_agregar"
+              label="Registrar sesión" [showIcon]="true" (click)="abrirModalSesion()" />
+            <app-button type="secundario" size="desktop" icon="Icono_notebook"
+              label="Añadir tema" [showIcon]="true" (click)="abrirModalTema()" />
+          </div>
+          <app-card tipo="TablaCard" tamano="Desktop" [filasTabla]="filasTabla()"
+            [mostrarMoleculaTabla]="false"
+            [botones]="[
+              { label: 'Exportar Excel', type: 'secundario', icon: 'Icono_excel' },
+              { label: 'Exportar PDF', type: 'primario', icon: 'Icono_pdf' }
+            ]" />
+          <app-card tipo="Leyenda" tamano="Desktop" titulo="Leyenda" class="leyenda-desktop"
+            [etiquetas]="[
+              { estado: 'clase', porcentaje: 'Clase' },
+              { estado: 'examen', porcentaje: 'Examen' },
+              { estado: 'atraso', porcentaje: 'Atraso' },
+              { estado: 'administrativa', porcentaje: 'Administrativa' }
+            ]" />
+        </section>
       </div>
 
-      <div class="tabla-wrapper">
-        <app-tabla-mes [filas]="filasTabla" />
-      </div>
+      <aside class="sidebar">
+        <app-card
+          tipo="backlog"
+          tamano="Desktop"
+          titulo="Backlog de temas"
+          subtitulo="Registra tus sesiones"
+          [etiqueta]="{ estado: 'masDel25', porcentaje: 'value%' }"
+          (busqueda)="onBuscar($event)">
+          <div class="sidebar__items">
+            @for (tema of backlogFiltrado(); track tema.titulo) {
+              <app-card
+                tipo="backlogCard"
+                tamano="Desktop"
+                [titulo]="tema.titulo"
+                [subtitulo]="tema.descripcion"
+                [etiqueta]="{ estado: 'masDel25', porcentaje: tema.progreso }" />
+            }
+          </div>
+        </app-card>
+      </aside>
 
-      <div class="exportar">
-        <app-button type="secundario" size="desktop" icon="Icono_excel" label="Exportar Excel" [showIcon]="true" />
-        <app-button type="primario" size="desktop" icon="Icono_pdf" label="Exportar PDF" [showIcon]="true" />
-      </div>
-
-      <article class="leyenda">
-        <h2>Leyenda</h2>
-        <div class="leyenda__items">
-          <app-etiqueta estados="clase" porcentaje="Clase" />
-          <app-etiqueta estados="examen" porcentaje="Examen" />
-          <app-etiqueta estados="atraso" porcentaje="Atraso" />
-          <app-etiqueta estados="administrativa" porcentaje="Administrativa" />
-        </div>
-      </article>
-    </section>
-
-    <aside class="sidebar">
-      <section class="sidebar__card">
-        <h2 class="sidebar__title">Backlog de temas</h2>
-        <p class="sidebar__subtitle">Registra tus sesiones</p>
-
-        <app-barra-busqueda placeholder="Buscar tema..." (busqueda)="onBuscar($event)" />
-
-        <div class="sidebar__items">
-          @for (tema of backlogFiltrado(); track tema.titulo) {
-            <article class="tema">
-              <div>
-                <h3>{{ tema.titulo }}</h3>
-                <p>{{ tema.descripcion }}</p>
-              </div>
-              <app-etiqueta estados="masDel25" [porcentaje]="tema.progreso" />
-            </article>
-          }
-        </div>
-      </section>
-    </aside>
-  </main>
-  } <!-- end @if (!isMobile()) -->
+    </div>
+  </div>
+  }
 
   @if (isMobile()) {
   <main class="contenido--mobile">
-    <div class="panel-principal-mobile">
+    <app-card
+      tipo="Principal"
+      tamano="mobile"
+      subtitulo="Universidad Autónoma de San Luis Potosí"
+      titulo="FORMA AAAE01 - Verificación del Cumplimiento del Programa"
+      class="hero-card" />
 
+    <div class="layout-mobile">
       <app-card
-        titulo="Leyenda"
-        [etiquetas]="[
-          {estado: 'clase', porcentaje: 'Clase'},
-          {estado: 'examen', porcentaje: 'Examen'},
-          {estado: 'atraso', porcentaje: 'Atraso'},
-          {estado: 'administrativa', porcentaje: 'Administrativa'}
-        ]" />
-
-      <app-card
-        [botones]="[
-          {label: 'Añadir tema', type: 'secundario'},
-          {label: 'Registrar sesión', type: 'primario'}
-        ]">
-        <div class="profesor__field">
-          <span class="profesor__label">PROFESOR</span>
-          <span class="profesor__value">Nombre</span>
-        </div>
-        <div class="profesor__field">
-          <span class="profesor__label">CICLO ESCOLAR</span>
-          <span class="profesor__value">2025-2026</span>
-        </div>
-        <div class="profesor__field">
-          <span class="profesor__label">Área</span>
-          <span class="profesor__value">Ciencias de la Computación</span>
-        </div>
-        <div class="profesor__field">
-          <span class="profesor__label">Materia - Grupo - Horario</span>
-          <span class="profesor__value">Matemáticas Discretas II -</span>
-          <span class="profesor__value">Grupo 3 - L,M,J,V</span>
-          <span class="profesor__value">10:00-11:00</span>
+        tipo="backlog"
+        tamano="mobile"
+        titulo="Backlog de temas"
+        subtitulo="Registra tus sesiones"
+        [etiqueta]="{ estado: 'masDel25', porcentaje: 'value%' }"
+        (busqueda)="onBuscar($event)">
+        <div class="sidebar__items">
+          @for (tema of backlogFiltrado(); track tema.titulo) {
+            <app-card
+              tipo="backlogCard"
+              tamano="mobile"
+              [titulo]="tema.titulo"
+              [subtitulo]="tema.descripcion"
+              [etiqueta]="{ estado: 'masDel25', porcentaje: tema.progreso }" />
+          }
         </div>
       </app-card>
 
+      <app-card
+        tipo="Leyenda"
+        tamano="mobile"
+        titulo="Leyenda"
+        [etiquetas]="[
+          { estado: 'clase', porcentaje: 'Clase' },
+          { estado: 'examen', porcentaje: 'Examen' },
+          { estado: 'atraso', porcentaje: 'Atraso' },
+          { estado: 'administrativa', porcentaje: 'Administrativa' }
+        ]" />
+
+      <div class="columna-izquierda-mobile">
+        <app-card [botones]="[]">
+          <div class="profesor__field">
+            <span class="profesor__label">PROFESOR</span>
+            <span class="profesor__value">Nombre</span>
+          </div>
+          <div class="profesor__field">
+            <span class="profesor__label">CICLO ESCOLAR</span>
+            <span class="profesor__value">2025-2026</span>
+          </div>
+          <div class="profesor__field">
+            <span class="profesor__label">Área</span>
+            <span class="profesor__value">Ciencias de la Computación</span>
+          </div>
+          <div class="profesor__field">
+            <span class="profesor__label">Materia - Grupo - Horario</span>
+            <span class="profesor__value">Matemáticas Discretas II -</span>
+            <span class="profesor__value">Grupo 3 - L,M,J,V</span>
+            <span class="profesor__value">10:00-11:00</span>
+          </div>
+        </app-card>
+
+        <div class="mobile-acciones">
+          <app-button
+            type="primario"
+            size="mobile"
+            icon="Icono_agregar"
+            label="Registrar sesión"
+            [showIcon]="true"
+            (click)="abrirModalSesion()" />
+          <app-button
+            type="secundario"
+            size="mobile"
+            icon="Icono_notebook"
+            label="Añadir tema"
+            [showIcon]="true"
+            (click)="abrirModalTema()" />
+        </div>
+
+        <app-card
+          tipo="TablaCard"
+          tamano="mobile"
+          [filasTabla]="filasTabla()"
+          [mostrarMoleculaTabla]="false"
+          [botones]="[
+            { label: 'Exportar Excel', type: 'secundario', icon: 'Icono_excel' },
+            { label: 'Exportar PDF', type: 'primario', icon: 'Icono_pdf' }
+          ]" />
+      </div>
     </div>
   </main>
-  } <!-- end @if (isMobile()) -->
+  }
 
+  <app-modal
+    tipo="Sesion"
+    tamano="Desktop"
+    titulo="Registrar sesión"
+    [visible]="mostrarModalSesion()"
+    [botones]="[
+      { label: 'Cerrar', type: 'secundario', icon: 'Icono_add' },
+      { label: 'Guardar sesión', type: 'primario', icon: 'Icono_agregar' }
+    ]"
+    (cerrar)="mostrarModalSesion.set(false)"
+    (accion)="handleAccionSesion($event)">
+    <div class="modal-fila modal-fila--4col">
+      <div class="modal-campo">
+        <span class="modal-campo__label">Tema</span>
+        <app-dropdown label="Ejemplo tema" tamano="pequeno" [items]="['Tema 1', 'Tema 2', 'Tema 3']" />
+      </div>
+      <div class="modal-campo">
+        <span class="modal-campo__label">Parcial</span>
+        <app-dropdown label="1er" tamano="pequeno" [items]="['1er', '2do', '3er']" />
+      </div>
+      <div class="modal-campo">
+        <span class="modal-campo__label">Unidad</span>
+        <app-inputs tipo="numero" tamano="pequeno" />
+      </div>
+      <div class="modal-campo">
+        <span class="modal-campo__label">Etiqueta</span>
+        <app-dropdown label="Clase Impartida" tamano="pequeno" [items]="['Clase Impartida', 'Examen o Atraso', 'Administrativa']" />
+      </div>
+    </div>
+    <div class="modal-fila modal-fila--3col">
+      <div class="modal-campo">
+        <span class="modal-campo__label">Horas reales (HR)</span>
+        <app-inputs tipo="numero" tamano="pequeno" />
+      </div>
+      <div class="modal-campo">
+        <span class="modal-campo__label">Fecha</span>
+        <app-inputs tipo="fecha" tamano="pequeno" />
+      </div>
+      <div class="modal-campo">
+        <span class="modal-campo__label">Notas (Opcional)</span>
+        <app-inputs tipo="texto" tamano="pequeno" />
+      </div>
+    </div>
+  </app-modal>
+
+  <app-modal
+    tipo="Tema"
+    tamano="Desktop"
+    titulo="Añadir / editar tema"
+    [visible]="mostrarModalTema()"
+    [botones]="[
+      { label: 'Cerrar', type: 'secundario', icon: 'Icono_add' },
+      { label: 'Guardar tema', type: 'primario', icon: 'Icono_agregar' }
+    ]"
+    (cerrar)="mostrarModalTema.set(false)"
+    (accion)="handleAccionTema($event)">
+    <div class="modal-fila modal-fila--full">
+      <div class="modal-campo">
+        <span class="modal-campo__label">Nombre del tema</span>
+        <app-inputs tipo="texto" tamano="grande" />
+      </div>
+    </div>
+    <div class="modal-fila modal-fila--2col">
+      <div class="modal-campo">
+        <span class="modal-campo__label">HP (Horas programadas)</span>
+        <app-inputs tipo="numero" tamano="pequeno" />
+      </div>
+      <div class="modal-campo">
+        <span class="modal-campo__label">Meta % (opcional)</span>
+        <app-inputs tipo="numero" tamano="pequeno" />
+      </div>
+    </div>
+  </app-modal>
 </div>

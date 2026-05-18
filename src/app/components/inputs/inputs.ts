@@ -6,26 +6,44 @@ import { Component, Input } from '@angular/core';
   templateUrl: './inputs.html',
   styleUrl: './inputs.css',
 })
-
 export class Inputs {
-  @Input() tipo: string = "texto"
-  @Input() tamano: string = "grande "
-  
-  get inputType(): string {
+  @Input() tipo = 'texto';
+  @Input() tamano = 'grande';
+  @Input() inputPlaceholder = '';
+  /** Alias legacy: text | number | date */
+  @Input() set inputType(value: string) {
+    if (!value) return;
+    if (value === 'number') this.tipo = 'numero';
+    else if (value === 'date') this.tipo = 'fecha';
+    else this.tipo = 'texto';
+  }
+
+  get htmlInputType(): string {
     switch (this.tipo) {
-      case 'texto': return 'text';
-      case 'numero': return 'number';
-      case 'fecha': return 'date';
-      default: return 'text';
+      case 'numero':
+        return 'number';
+      case 'fecha':
+        return 'date';
+      default:
+        return 'text';
     }
   }
 
-  get inputPlaceholder(): string {
-    switch (this.tipo) {
-      case 'texto': return 'Ingrese texto...';
-      case 'numero': return 'Ingrese cantidad...';
-      case 'fecha': return 'Fecha';
-      default: return '';
+  get placeholder(): string {
+    if (this.inputPlaceholder) {
+      return this.inputPlaceholder;
     }
+    switch (this.tipo) {
+      case 'numero':
+        return 'Inserte cantidad...';
+      case 'fecha':
+        return 'Fecha';
+      default:
+        return 'Inserte texto...';
+    }
+  }
+
+  get tamanoClase(): string {
+    return this.tamano.trim();
   }
 }

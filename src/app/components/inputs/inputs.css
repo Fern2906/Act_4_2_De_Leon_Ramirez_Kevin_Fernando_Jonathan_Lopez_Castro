@@ -1,29 +1,25 @@
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
 .input {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 8px;
-    border: 1px solid var(--neutral);
+    gap: 10px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border: 1px solid var(--border);
+    border-radius: 6px;
     background: var(--background-soft);   
-    font-family: var(--text-body-second);
+    font: var(--text-body-regular);
     box-sizing: border-box;
-}
-
-.input--grande {
-    width: 471px;
-    height: 44px;
-    padding: 2px 10px 0 10px;
-}
-
-.input--mediano {
-    width: 344px;
-    height: 44px;
-    padding: 2px 10px 0 10px;
-}
-
-.input--pequeno {
-    width: 241px;
-    height: 44px;
-    padding: 2px 10px 0 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 10px 32px 10px 12px;   
+    cursor: pointer;
+    width: 100%;
 }
 
 /* ── Pantallas Medianas (Tablet) ── */

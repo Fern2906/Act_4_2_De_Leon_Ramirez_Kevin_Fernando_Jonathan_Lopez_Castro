@@ -1,0 +1,10 @@
+.molecula-mes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  background: var(--background-white);
+  border: 1px solid var(--border-strong);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}

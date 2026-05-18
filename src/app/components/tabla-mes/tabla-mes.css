@@ -1,176 +1,96 @@
-/* ── Label de sección ── */
-.tm-molecula__label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font: var(--text-body-small);
-  color: var(--primary-blue);
-  margin-bottom: 8px;
-}
-
-/* ── Sección Molécula/Mes ── */
-.tm-molecula {
-  margin-bottom: 20px;
-}
-
-.tm-molecula__celdas {
-  display: flex;
-  gap: 4px;
-  flex-wrap: nowrap;
-}
-
-/* ── Celda de día (compartida entre molécula y tabla) ── */
-.tm-celda {
-  width: 22px;
-  height: 22px;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  background: var(--background-white);
-  flex-shrink: 0;
-}
-
-/* ── Wrapper de tabla ── */
-.tm-tabla-wrap {
-  overflow-x: auto;
-}
-
-/* ── Tabla ── */
-.tm-tabla {
-  border-collapse: collapse;
+.tabla {
   width: 100%;
-  font: var(--text-body-small);
+  max-width: var(--layout-tabla-max);
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
 }
 
-/* ── Encabezados ── */
-.tm-th {
-  background: var(--encabezado);
-  border: 1px solid var(--border);
-  padding: 6px 8px;
-  white-space: nowrap;
-  font: var(--text-body-second);
-  text-align: left;
-}
-
-.tm-th--tema {
-  min-width: 160px;
-}
-
-.tm-th--mes {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* ── Nav mes ── */
-.tm-nav {
-  background: none;
-  border: none;
-  cursor: pointer;
+.tabla__slot {
   padding: 0;
+  height: 1px;
+}
+
+.tabla__slot app-celdas,
+.tabla__slot app-molecula-mes {
   display: flex;
-  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.tm-nav:hover { opacity: 0.6; }
-
-/* ── Filas ── */
-.tm-tr:nth-child(even) { background: var(--background-soft); }
-
-.tm-td {
-  border: 1px solid var(--border);
-  padding: 6px 8px;
-  vertical-align: middle;
+.tabla__slot ::ng-deep .celda {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-.tm-td--tema {
+/* Permitir que la columna de TEMA absorba todo el espacio restante */
+.tabla__slot--tema-h {
+  width: 100%;
+}
+
+/* Celda tema + botón eliminar */
+.tabla__tema-wrapper {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
 }
 
-.tm-td--dias {
-  padding: 6px;
+.tabla__tema-celda {
+  flex: 1;
 }
 
-/* ── Botón eliminar en fila ── */
-.tm-delete {
-  width: 32px;
-  height: 32px;
+.tabla__tema-wrapper > app-celdas:last-child {
+  width: auto;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--background-white);
-  border: 2px solid var(--primary-blue);
-  color: var(--primary-blue);
-  border-radius: 6px;
-  cursor: pointer;
 }
 
-.tm-delete:hover { background: var(--botonperfil); }
-
-/* ── Info del tema ── */
-.tm-tema {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+/* Celdas de encabezado y datos ocupan el slot */
+.tabla__slot ::ng-deep .celda--tipo-texto.celda--color-encabezado.celda--tamano-desktop,
+.tabla__slot ::ng-deep .celda--tipo-mes.celda--color-encabezado.celda--tamano-desktop {
+  width: 100%;
+  max-width: none;
 }
 
-.tm-tema__titulo {
-  font: var(--text-body-second);
-  color: var(--text-main);
+/* Esquinas redondeadas */
+.tabla__fila--encabezado .tabla__slot--tema-h ::ng-deep .celda {
+  border-top-left-radius: var(--radius-xs);
 }
 
-.tm-tema__desc {
-  font: var(--text-body-small);
-  color: var(--neutral);
+.tabla__fila--encabezado .tabla__slot--pct-h ::ng-deep .celda {
+  border-top-right-radius: var(--radius-xs);
 }
 
-/* ── Celdas de días en fila ── */
-.tm-dias {
-  display: flex;
-  gap: 3px;
+.tabla__fila--ultima .tabla__tema-celda ::ng-deep .celda {
+  border-bottom-left-radius: var(--radius-xs);
 }
 
-/* ── Input numérico en celda ── */
-.tm-input {
-  width: 52px;
-  padding: 4px 6px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font: var(--text-body-small);
-  text-align: center;
+.tabla__fila--ultima .tabla__slot--pct ::ng-deep .celda {
+  border-bottom-right-radius: var(--radius-xs);
 }
 
-/* ── Texto numérico ── */
-.tm-num {
-  font: var(--text-body-small);
-  color: var(--text-main);
+/* Molécula standalone (preview) */
+:host > app-molecula-mes {
+  display: block;
+  margin-bottom: 16px;
 }
 
-/* ── Ajustes Responsivos con @media ── */
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 120px;
+}
+
+.tabla-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (max-width: 1024px) {
-  .tm-th--tema {
-    min-width: 120px;
-  }
-  .tm-input {
-    width: 46px;
-  }
-}
-
-@media (max-width: 768px) {
-  .tm-celda {
-    width: 28px;
-    height: 28px; /* Touch target más grande */
-  }
-  
-  .tm-input {
-    width: 60px; /* Más ancho para facilitar tap */
-    padding: 6px 8px;
-  }
-  
-  .tm-delete {
-    width: 36px;
-    height: 36px;
+  .tabla {
+    min-width: var(--layout-tabla-max);
   }
 }
