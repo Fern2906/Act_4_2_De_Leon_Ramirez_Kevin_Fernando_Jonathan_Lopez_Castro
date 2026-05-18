@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .card {
   box-sizing: border-box;
   background: var(--background-soft);
@@ -182,7 +186,7 @@
 
 .card--tipo-backlog.card--tamano-mobile {
   width: 100%;
-  max-width: 370px;
+  max-width: 100%;
   min-height: 625px;
   padding: 2px 20px 20px;
 }
@@ -258,7 +262,7 @@
 
 .card--tipo-leyenda.card--tamano-mobile {
   width: 100%;
-  max-width: 370px;
+  max-width: 100%;
   min-height: 220px;
   padding: 7px 16px 20px;
 }
@@ -312,7 +316,7 @@
 
 .card--tipo-backlogcard.card--tamano-mobile {
   width: 100%;
-  max-width: 358px;
+  max-width: 100%;
   min-height: 202px;
   padding: 30px 22px;
 }
@@ -412,9 +416,14 @@
 }
 
 .card--tipo-texto.card--tamano-desktop {
-  width: 450px;
-  min-width: fit-content;
+  width: 100%;
   min-height: 100px;
+}
+
+.card--tipo-texto ::ng-deep app-dropdown,
+.card--tipo-texto ::ng-deep select,
+.card--tipo-texto ::ng-deep .select {
+  width: 100% !important;
 }
 
 .card--tipo-texto.card--tamano-tablet,
@@ -465,5 +474,16 @@
 @media (max-width: 768px) {
   .card--tipo-contenido .card__header {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card--tipo-backlog.card--tamano-desktop {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .card--tipo-backlogcard.card--tamano-desktop {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }

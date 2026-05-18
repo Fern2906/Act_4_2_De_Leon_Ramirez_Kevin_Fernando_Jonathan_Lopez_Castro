@@ -1,3 +1,7 @@
+:host {
+  display: inline-block;
+}
+
 .btn {
   display: flex;
   align-items: center;
@@ -5,7 +9,7 @@
   gap: 10px;
   padding: 8px 12px;
   border-radius: 8px;
-  font: var(--text-body-second)
+  font: var(--text-body-second);
 }
 
 /* ─── Tamaños ─── */
@@ -92,4 +96,16 @@
   background-color: var(--primary-blue);
 }
 
-
+@media (max-width: 768px) {
+  :host {
+    display: inline-block;
+    width: 100%;
+  }
+  .btn {
+    width: 100% !important;
+  }
+  .btn--usuario {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}

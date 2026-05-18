@@ -24,6 +24,13 @@
     class="hero-card" />
 
     <div class="layout-principal">
+      <app-card tipo="Leyenda" tamano="Desktop" titulo="Leyenda" class="leyenda-tablet"
+        [etiquetas]="[
+          { estado: 'clase', porcentaje: 'Clase' },
+          { estado: 'examen', porcentaje: 'Examen' },
+          { estado: 'atraso', porcentaje: 'Atraso' },
+          { estado: 'administrativa', porcentaje: 'Administrativa' }
+        ]" />
 
       <!-- Columna izquierda: datos + acciones + tabla -->
       <div class="columna-izquierda">
@@ -53,7 +60,7 @@
               { label: 'Exportar Excel', type: 'secundario', icon: 'Icono_excel' },
               { label: 'Exportar PDF', type: 'primario', icon: 'Icono_pdf' }
             ]" />
-          <app-card tipo="Leyenda" tamano="Desktop" titulo="Leyenda"
+          <app-card tipo="Leyenda" tamano="Desktop" titulo="Leyenda" class="leyenda-desktop"
             [etiquetas]="[
               { estado: 'clase', porcentaje: 'Clase' },
               { estado: 'examen', porcentaje: 'Examen' },
@@ -90,33 +97,32 @@
 
   @if (isMobile()) {
   <main class="contenido--mobile">
-    <div class="panel-principal-mobile">
-      <div class="mobile-acciones">
-        <app-button
-          type="primario"
-          size="mobile"
-          icon="Icono_agregar"
-          label="Registrar sesión"
-          [showIcon]="true"
-          (click)="abrirModalSesion()" />
-        <app-button
-          type="secundario"
-          size="mobile"
-          icon="Icono_notebook"
-          label="Añadir tema"
-          [showIcon]="true"
-          (click)="abrirModalTema()" />
-      </div>
+    <app-card
+      tipo="Principal"
+      tamano="mobile"
+      subtitulo="Universidad Autónoma de San Luis Potosí"
+      titulo="FORMA AAAE01 - Verificación del Cumplimiento del Programa"
+      class="hero-card" />
 
+    <div class="layout-mobile">
       <app-card
-        tipo="TablaCard"
+        tipo="backlog"
         tamano="mobile"
-        [filasTabla]="filasTabla()"
-        [mostrarMoleculaTabla]="false"
-        [botones]="[
-          { label: 'Exportar Excel', type: 'secundario', icon: 'Icono_excel' },
-          { label: 'Exportar PDF', type: 'primario', icon: 'Icono_pdf' }
-        ]" />
+        titulo="Backlog de temas"
+        subtitulo="Registra tus sesiones"
+        [etiqueta]="{ estado: 'masDel25', porcentaje: 'value%' }"
+        (busqueda)="onBuscar($event)">
+        <div class="sidebar__items">
+          @for (tema of backlogFiltrado(); track tema.titulo) {
+            <app-card
+              tipo="backlogCard"
+              tamano="mobile"
+              [titulo]="tema.titulo"
+              [subtitulo]="tema.descripcion"
+              [etiqueta]="{ estado: 'masDel25', porcentaje: tema.progreso }" />
+          }
+        </div>
+      </app-card>
 
       <app-card
         tipo="Leyenda"
@@ -129,27 +135,55 @@
           { estado: 'administrativa', porcentaje: 'Administrativa' }
         ]" />
 
-      <app-card
-        [botones]="[]">
-        <div class="profesor__field">
-          <span class="profesor__label">PROFESOR</span>
-          <span class="profesor__value">Nombre</span>
+      <div class="columna-izquierda-mobile">
+        <app-card [botones]="[]">
+          <div class="profesor__field">
+            <span class="profesor__label">PROFESOR</span>
+            <span class="profesor__value">Nombre</span>
+          </div>
+          <div class="profesor__field">
+            <span class="profesor__label">CICLO ESCOLAR</span>
+            <span class="profesor__value">2025-2026</span>
+          </div>
+          <div class="profesor__field">
+            <span class="profesor__label">Área</span>
+            <span class="profesor__value">Ciencias de la Computación</span>
+          </div>
+          <div class="profesor__field">
+            <span class="profesor__label">Materia - Grupo - Horario</span>
+            <span class="profesor__value">Matemáticas Discretas II -</span>
+            <span class="profesor__value">Grupo 3 - L,M,J,V</span>
+            <span class="profesor__value">10:00-11:00</span>
+          </div>
+        </app-card>
+
+        <div class="mobile-acciones">
+          <app-button
+            type="primario"
+            size="mobile"
+            icon="Icono_agregar"
+            label="Registrar sesión"
+            [showIcon]="true"
+            (click)="abrirModalSesion()" />
+          <app-button
+            type="secundario"
+            size="mobile"
+            icon="Icono_notebook"
+            label="Añadir tema"
+            [showIcon]="true"
+            (click)="abrirModalTema()" />
         </div>
-        <div class="profesor__field">
-          <span class="profesor__label">CICLO ESCOLAR</span>
-          <span class="profesor__value">2025-2026</span>
-        </div>
-        <div class="profesor__field">
-          <span class="profesor__label">Área</span>
-          <span class="profesor__value">Ciencias de la Computación</span>
-        </div>
-        <div class="profesor__field">
-          <span class="profesor__label">Materia - Grupo - Horario</span>
-          <span class="profesor__value">Matemáticas Discretas II -</span>
-          <span class="profesor__value">Grupo 3 - L,M,J,V</span>
-          <span class="profesor__value">10:00-11:00</span>
-        </div>
-      </app-card>
+
+        <app-card
+          tipo="TablaCard"
+          tamano="mobile"
+          [filasTabla]="filasTabla()"
+          [mostrarMoleculaTabla]="false"
+          [botones]="[
+            { label: 'Exportar Excel', type: 'secundario', icon: 'Icono_excel' },
+            { label: 'Exportar PDF', type: 'primario', icon: 'Icono_pdf' }
+          ]" />
+      </div>
     </div>
   </main>
   }

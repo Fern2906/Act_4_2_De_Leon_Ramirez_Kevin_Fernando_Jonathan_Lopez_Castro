@@ -60,7 +60,7 @@
   padding: 22px 31px 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;  /* ← aumenta el gap entre secciones */
+  gap: 20px;
   width: 100%;
 }
 
@@ -72,24 +72,7 @@
 .datos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 20px;  /* ← ajusta el gap vertical y horizontal */
-  align-items: start;
-}
-
-.datos ::ng-deep .card--tipo-texto.card--tamano-desktop {
-  width: 100%;
-  max-width: none;
-  min-height: 100px;
-}
-
-.datos ::ng-deep .card--tipo-texto .card__texto app-dropdown select {
-  width: 100%;
-}
-
-.contenido {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--layout-sidebar);
-  gap: 20px;  /* ← consistente con el resto */
+  gap: 12px 20px;
   align-items: start;
 }
 
@@ -106,21 +89,6 @@
   flex-wrap: wrap;
   gap: var(--layout-gap-lg);
   align-items: center;
-}
-
-.panel-principal ::ng-deep .card--tipo-tablacard {
-  width: 100%;
-  max-width: 100%;
-}
-
-.panel-principal ::ng-deep .card__tabla-body,
-.panel-principal-mobile ::ng-deep .card__tabla-body {
-  width: 100%;
-}
-
-.panel-principal ::ng-deep .card--tipo-leyenda.card--tamano-desktop {
-  max-width: 600px;
-  width: 100%;
 }
 
 .sidebar {
@@ -181,20 +149,10 @@
   min-width: 0;
 }
 
-.panel-principal-mobile ::ng-deep .card--tipo-tablacard,
-.panel-principal-mobile ::ng-deep .card--tipo-leyenda {
-  width: 100%;
-  max-width: 100%;
-}
-
 .mobile-acciones {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-}
-
-.mobile-acciones app-button {
-  width: 100%;
 }
 
 .profesor__field {
@@ -219,22 +177,65 @@
   color: var(--neutral);
 }
 
+.leyenda-tablet {
+  display: none;
+}
+
+.layout-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.columna-izquierda-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  background-color: var(--background-soft);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  border-color: var(--border-strong);
+  padding: var(--space-md);
+}
+
 @media (max-width: 1200px) {
-  
   .layout-principal {
-    grid-template-columns: 1fr;
-  }
-  .sidebar {
-    position: static;
-    order: 2;
-  }
-  .columna-izquierda {
-    order: 1;
-    background-color: red;
+    display: flex;
+    flex-direction: column;
   }
 
-  .panel-principal {
+  .sidebar {
+    position: static;
     order: 1;
+    width: 100%;
+  }
+
+  .sidebar__items {
+    flex-direction: column;
+    overflow-x: hidden;
+    padding-bottom: 0;
+  }
+
+  .sidebar__items > * {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .leyenda-tablet {
+    display: block;
+    order: 2;
+    width: 100%;
+  }
+
+  .columna-izquierda {
+    order: 3;
+    width: 100%;
+  }
+
+  .leyenda-desktop {
+    display: none !important;
   }
 }
 
@@ -256,11 +257,6 @@
     padding: var(--space-xl);
   }
 
-  .topbar ::ng-deep .btn--usuario {
-    width: 100%;
-    min-width: 0;
-  }
-
   .verificacion__body {
     padding: 14px;
   }
@@ -268,10 +264,6 @@
   .acciones {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .acciones app-button {
-    width: 100%;
   }
 
   .modal-fila--4col,
