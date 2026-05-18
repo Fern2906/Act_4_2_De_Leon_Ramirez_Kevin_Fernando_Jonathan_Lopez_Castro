@@ -186,6 +186,9 @@
   flex-direction: column;
   gap: var(--space-md);
   margin-top: var(--space-md);
+  padding: var(--space-lg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
 }
 
 .columna-izquierda-mobile {
@@ -203,6 +206,9 @@
   .layout-principal {
     display: flex;
     flex-direction: column;
+    padding: var(--space-lg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-xl);
   }
 
   .sidebar {

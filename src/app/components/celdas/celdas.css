@@ -224,17 +224,3 @@
   flex: 1;
   min-height: 0;
 }
-
-.celdas-showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-}
-
-.celdas-showcase__fila {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
