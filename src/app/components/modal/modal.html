@@ -1,6 +1,6 @@
 @if (visible) {
   <div class="modal-backdrop" (click)="onCerrar()">
-    <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal" [class.modal--movil]="variante === 'movil'" (click)="$event.stopPropagation()">
 
       <!-- Cabecera -->
       <div class="modal__header">

@@ -4,16 +4,38 @@ import { Dropdown } from '../dropdown/dropdown';
 import { Button } from '../button/button';
 import { Etiqueta } from '../etiqueta/etiqueta';
 
+/** Par de datos que describe el estado y el porcentaje de una etiqueta. */
 export interface CardEtiqueta {
+  /** Clase CSS de estado aplicada a `app-etiqueta` (p. ej. `'verde'`, `'rojo'`). */
   estado: string;
+  /** Texto de porcentaje mostrado dentro de la etiqueta (p. ej. `'80%'`). */
   porcentaje: string;
 }
 
+/** Definición de un botón que se renderiza en el pie de la card. */
 export interface CardBoton {
+  /** Texto visible del botón. */
   label: string;
+  /** Variante visual del botón. Predeterminado: `'primario'`. */
   type?: 'primario' | 'secundario' | 'exito' | 'alerta' | 'icono' | 'usuario';
 }
 
+/**
+ * Contenedor de tarjeta (card) composable que puede incluir:
+ * encabezado con título/subtítulo, etiquetas de estado, barra de búsqueda,
+ * dropdown y botones de acción en el pie.
+ *
+ * Cada sección opcional se habilita con un `@Input` booleano o con datos.
+ *
+ * @example
+ * <app-card
+ *   titulo="Planeación"
+ *   subtitulo="Enero 2026"
+ *   [etiqueta]="{ estado: 'verde', porcentaje: '75%' }"
+ *   [mostrarBusqueda]="true"
+ *   [botones]="[{ label: 'Guardar', type: 'primario' }]"
+ * />
+ */
 @Component({
   selector: 'app-card',
   imports: [BarraBusqueda, Dropdown, Button, Etiqueta],
@@ -21,25 +43,33 @@ export interface CardBoton {
   styleUrl: './card.css',
 })
 export class Card {
-  /** Texto destacado en la cabecera */
+  /** Texto destacado en la cabecera de la card. */
   @Input() titulo = '';
-  /** Texto secundario en la cabecera */
+
+  /** Texto secundario debajo del título. */
   @Input() subtitulo = '';
 
-  /** Etiqueta única a la derecha del header (shorcut para una sola) */
+  /** Etiqueta única mostrada a la derecha del encabezado. */
   @Input() etiqueta: CardEtiqueta | null = null;
-  /** Lista de etiquetas bajo el header */
+
+  /** Lista de etiquetas adicionales debajo del encabezado. */
   @Input() etiquetas: CardEtiqueta[] = [];
 
-  /** Muestra la barra de búsqueda */
+  /** Si `true`, muestra la barra de búsqueda interna. */
   @Input() mostrarBusqueda = false;
+
+  /** Placeholder del campo de búsqueda interno. */
   @Input() placeholderBusqueda = 'Buscar tema...';
 
-  /** Muestra el dropdown */
+  /** Si `true`, muestra el dropdown interno. */
   @Input() mostrarDropdown = false;
+
+  /** Etiqueta visible del dropdown interno. */
   @Input() dropdownLabel = 'Seleccionar';
+
+  /** Opciones del dropdown interno. */
   @Input() dropdownItems: string[] = ['Opción 1', 'Opción 2', 'Opción 3'];
 
-  /** Botones al pie */
+  /** Lista de botones renderizados en el pie de la card. */
   @Input() botones: CardBoton[] = [];
 }

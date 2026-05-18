@@ -87,6 +87,18 @@
     min-height: 100vh;
     border: none;
   }
+
+  /* Variante móvil: panel flotante compacto, no cubre toda la pantalla */
+  .modal.modal--movil {
+    min-width: unset;
+    width: 90vw;
+    max-width: 420px;
+    border-radius: 12px;
+    min-height: unset;
+    max-height: 80vh;
+    border: 1px solid var(--border);
+    overflow-y: auto;
+  }
 }
 
 /* ── Pie ── */

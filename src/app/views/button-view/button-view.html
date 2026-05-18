@@ -10,6 +10,8 @@
       <app-button type="secundario" label="Abrir modal mini" (click)="abrirModal('mini')" />
       <app-button type="secundario" label="Abrir modal compacto" (click)="abrirModal('compacto')" />
       <app-button type="secundario" label="Abrir modal medio" (click)="abrirModal('medio')" />
+      <app-button type="secundario" label="Abrir modal móvil" (click)="abrirModal('movil')" />
+      <app-button type="secundario" label="Abrir modal sesión móvil" (click)="abrirModal('sesion-movil')" />
     </div>
   </section>
 
@@ -245,6 +247,86 @@
           </div>
           <div class="modal-campo">
             <span class="modal-campo__label">Nombre campo</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- Variante 7: móvil compacto (panel flotante que no ocupa toda la pantalla) -->
+  <section class="view__section">
+    <div class="view__row">
+      <app-modal
+        titulo="Añadir / editar tema"
+        variante="movil"
+        [visible]="modalMovilAbierto"
+        [botones]="[{label:'Cerrar', type:'secundario'}, {label:'Guardar tema', type:'primario'}]"
+        (cerrar)="cerrarModal('movil')">
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Nombre del tema</span>
+            <app-inputs tipo="texto" placeholder="Ejemplo de tema" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Horas Programadas</span>
+            <app-inputs tipo="numero" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Meta % (Opcional)</span>
+            <app-inputs tipo="numero" />
+          </div>
+        </div>
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- Variante 8: sesión móvil compacto (Registrar Sesión en panel flotante) -->
+  <section class="view__section">
+    <div class="view__row">
+      <app-modal
+        titulo="Registrar Sesión"
+        variante="movil"
+        [visible]="modalSesionMovilAbierto"
+        [botones]="[{label:'Cerrar', type:'secundario'}, {label:'Guardar sesión', type:'primario'}]"
+        (cerrar)="cerrarModal('sesion-movil')">
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Tema</span>
+            <app-dropdown label="Seleccionar" [items]="['Tema 1','Tema 2','Tema 3']" tamano="pequeno" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Parcial</span>
+            <app-dropdown label="Seleccionar" [items]="['Parcial 1','Parcial 2']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Unidad</span>
+            <app-inputs tipo="numero" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--2col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Etiqueta</span>
+            <app-dropdown label="Seleccionar" [items]="['AAAE01 - 01','AAAE01 - 02']" tamano="pequeno" />
+          </div>
+          <div class="modal-campo">
+            <span class="modal-campo__label">Horas Reales (HR)</span>
+            <app-inputs tipo="texto" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Fecha</span>
+            <app-inputs tipo="fecha" />
+          </div>
+        </div>
+        <div class="modal-fila modal-fila--1col">
+          <div class="modal-campo">
+            <span class="modal-campo__label">Notas (Opcional)</span>
             <app-inputs tipo="texto" />
           </div>
         </div>
