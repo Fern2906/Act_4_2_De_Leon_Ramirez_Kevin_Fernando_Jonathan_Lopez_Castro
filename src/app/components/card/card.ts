@@ -4,6 +4,7 @@ import { Dropdown } from '../dropdown/dropdown';
 import { Button } from '../button/button';
 import { Etiqueta } from '../etiqueta/etiqueta';
 import { TablaMes, TablaFila } from '../tabla-mes/tabla-mes';
+import { NgTemplateOutlet } from '@angular/common';
 
 export interface CardEtiqueta {
   estado: string;
@@ -29,7 +30,7 @@ export type CardTamano = 'Desktop' | 'Tablet' | 'mobile';
 
 @Component({
   selector: 'app-card',
-  imports: [BarraBusqueda, Dropdown, Button, Etiqueta, TablaMes],
+  imports: [BarraBusqueda, Dropdown, Button, Etiqueta, TablaMes, NgTemplateOutlet],
   templateUrl: './card.html',
   styleUrl: './card.css',
 })

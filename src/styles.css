@@ -37,16 +37,16 @@
   /* ── Tipografía ── */
   --font-family: 'Open Sans', sans-serif;
 
-  --text-heading-h1:      700 32px/auto var(--font-family);
-  --text-heading-h2:      700 24px/auto var(--font-family);
-  --text-heading-h2-semi: 600 20px/auto var(--font-family);
-  --text-body-medium:     600 20px/auto var(--font-family);
-  --text-body-regular:    400 16px/auto var(--font-family);
-  --text-body-second:     600 16px/auto var(--font-family);
-  --text-body-small:      400 14px/auto var(--font-family);
-  --text-label:           600 12px/auto var(--font-family);
-  --text-view-title:      700 28px/auto var(--font-family);
-  --text-view-subtitle:   600 14px/auto var(--font-family);
+  --text-heading-h1:      700 32px/36px var(--font-family);
+  --text-heading-h2:      700 24px/29px var(--font-family);
+  --text-heading-h2-semi: 600 20px/24px var(--font-family);
+  --text-body-medium:     600 20px/24px var(--font-family);
+  --text-body-regular:    400 16px/19px var(--font-family);
+  --text-body-second:     600 16px/19px var(--font-family);
+  --text-body-small:      400 14px/17px var(--font-family);
+  --text-label:           600 12px/14px var(--font-family);
+  --text-view-title:      700 28px/34px var(--font-family);
+  --text-view-subtitle:   600 14px/17px var(--font-family);
 
   /* ── Botones ── */
   --btn-height-desktop: 48px;

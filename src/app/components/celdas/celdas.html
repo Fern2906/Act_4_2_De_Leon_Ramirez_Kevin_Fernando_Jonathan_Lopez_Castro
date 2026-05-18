@@ -7,10 +7,10 @@
       <span class="celda__texto">{{ texto }}</span>
       <div class="celda__mes-nav">
         <button class="celda__mes-btn" type="button" (click)="mesAnterior.emit()">
-          <app-icon name="Chevron left" [size]="flechaTamano[tamano]" />
+          <app-icon name="chevron-left" [size]="flechaTamano[tamano]" />
         </button>
         <button class="celda__mes-btn" type="button" (click)="mesSiguiente.emit()">
-          <app-icon name="Chevron right" [size]="flechaTamano[tamano]" />
+          <app-icon name="chevron-right" [size]="flechaTamano[tamano]" />
         </button>
       </div>
     }

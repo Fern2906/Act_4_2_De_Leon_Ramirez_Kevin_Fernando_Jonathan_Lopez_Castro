@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Celdas } from '../celdas/celdas';
 
-export const DIAS_MES = 15;
+export const DIAS_MES = 30;
 
 @Component({
   selector: 'app-molecula-mes',

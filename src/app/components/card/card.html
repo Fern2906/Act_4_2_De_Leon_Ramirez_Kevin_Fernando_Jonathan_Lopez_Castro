@@ -44,7 +44,7 @@
             (busqueda)="busqueda.emit($event)" />
         </div>
         <div class="card__body card__body--backlog">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
         </div>
       </div>
     }
@@ -75,7 +75,7 @@
         @if (etiqueta) {
           <app-etiqueta [estados]="etiqueta.estado" [porcentaje]="etiqueta.porcentaje" />
         }
-        <ng-content />
+        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
       </div>
     }
 
@@ -118,7 +118,7 @@
             }
           </div>
         }
-        <ng-content />
+        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
       </div>
     }
 
@@ -157,7 +157,7 @@
       }
 
       <div class="card__body">
-        <ng-content />
+        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
       </div>
 
       @if (botones.length > 0) {
@@ -174,4 +174,8 @@
       }
     }
   }
+
+  <ng-template #contentTpl>
+    <ng-content />
+  </ng-template>
 </div>

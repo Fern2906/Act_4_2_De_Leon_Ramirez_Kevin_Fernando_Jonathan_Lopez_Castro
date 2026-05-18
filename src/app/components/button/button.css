@@ -42,7 +42,7 @@
 }
 
 .btn--secundario:hover {
-  background-color: var(--botonperfil);
+  background-color: var(--background-white);
   border: 2px solid var(--text-main);
 }
 

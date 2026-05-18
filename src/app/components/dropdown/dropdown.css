@@ -9,6 +9,10 @@
     border: 1px solid var(--border);
     font: var(--text-body-regular);
     box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 10px 32px 10px 12px;   
+    cursor: pointer;
 }
 
 .select--default {
@@ -23,14 +27,6 @@
     background: var(--botonperfil);
 }
 
-.select--mediano {
-    width: 300px;
-}
-
-.select--pequeno {
-    width: 200px;
-}
-
 .option {
     display: flex;
     padding: 10px;
@@ -41,18 +37,6 @@
     align-self: stretch;
     border-radius: 6px;
     border: 1px solid var(--border);
-}
-
-.option--grande {
-    display: flex;
-}
-
-.option--mediano {
-    width: 300px;
-}
-
-.option--pequeno {
-    width: 200px;
 }
 
 /* ── Pantallas Medianas (Tablet) ── */

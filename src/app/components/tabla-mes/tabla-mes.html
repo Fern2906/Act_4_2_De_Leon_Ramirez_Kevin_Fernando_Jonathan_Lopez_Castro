@@ -3,94 +3,91 @@
 }
 
 <div class="tabla-scroll">
-<div class="tabla" role="table">
-  <div class="tabla__fila tabla__fila--encabezado" role="row">
-    <div class="tabla__grupo-izq" role="rowgroup">
-      <div class="tabla__slot tabla__slot--tema-h" role="columnheader">
+<table class="tabla">
+  <thead>
+    <tr class="tabla__fila tabla__fila--encabezado">
+      <th class="tabla__slot tabla__slot--tema-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="TEMA" />
-      </div>
-      <div class="tabla__slot tabla__slot--hp-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--hp-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="HP" />
-      </div>
-      <div class="tabla__slot tabla__slot--hr-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--hr-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="HR" />
-      </div>
-    </div>
-    <div class="tabla__slot tabla__slot--mes-h" role="columnheader">
-      <app-celdas
-        tipo="Mes"
-        color="Encabezado"
-        tamano="Desktop"
-        texto="MES"
-        (mesAnterior)="onMesAnterior()"
-        (mesSiguiente)="onMesSiguiente()" />
-    </div>
-    <div class="tabla__grupo-der" role="rowgroup">
-      <div class="tabla__slot tabla__slot--problemas-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--mes-h">
+        <app-celdas
+          tipo="Mes"
+          color="Encabezado"
+          tamano="Desktop"
+          texto="MES"
+          (mesAnterior)="onMesAnterior()"
+          (mesSiguiente)="onMesSiguiente()" />
+      </th>
+      <th class="tabla__slot tabla__slot--problemas-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Problemas" />
-      </div>
-      <div class="tabla__slot tabla__slot--teoria-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--teoria-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Teoría" />
-      </div>
-      <div class="tabla__slot tabla__slot--trabajos-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--trabajos-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Trabajos" />
-      </div>
-      <div class="tabla__slot tabla__slot--tareas-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--tareas-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Tareas" />
-      </div>
-      <div class="tabla__slot tabla__slot--examenes-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--examenes-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="Exámenes" />
-      </div>
-      <div class="tabla__slot tabla__slot--pct-h" role="columnheader">
+      </th>
+      <th class="tabla__slot tabla__slot--pct-h">
         <app-celdas tipo="Texto" color="Encabezado" tamano="Desktop" texto="%" />
-      </div>
-    </div>
-  </div>
-
-  @for (fila of filas; track $index; let last = $last) {
-    <div class="tabla__fila" [class.tabla__fila--ultima]="last" role="row">
-      <div class="tabla__grupo-izq" role="rowgroup">
-        <div class="tabla__slot tabla__slot--tema" role="cell">
-          <div class="tabla__tema-celda">
-            <app-celdas
-              tipo="Tema"
-              tamano="Desktop"
-              [titulo]="fila.titulo"
-              [descripcion]="fila.descripcion" />
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (fila of filas; track $index; let last = $last) {
+      <tr class="tabla__fila" [class.tabla__fila--ultima]="last">
+        <td class="tabla__slot tabla__slot--tema">
+          <div class="tabla__tema-wrapper">
+            <div class="tabla__tema-celda">
+              <app-celdas
+                tipo="Tema"
+                tamano="Desktop"
+                [titulo]="fila.titulo"
+                [descripcion]="fila.descripcion" />
+            </div>
+            <app-celdas tipo="Boton" tamano="Desktop" (eliminar)="eliminarTema.emit($index)" />
           </div>
-          <app-celdas tipo="Boton" tamano="Desktop" (eliminar)="eliminarTema.emit($index)" />
-        </div>
-        <div class="tabla__slot tabla__slot--hp" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--hp">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.hp)" />
-        </div>
-        <div class="tabla__slot tabla__slot--hr" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--hr">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.hr)" />
-        </div>
-      </div>
-      <div class="tabla__slot tabla__slot--mes" role="cell">
-        <app-molecula-mes />
-      </div>
-      <div class="tabla__grupo-der" role="rowgroup">
-        <div class="tabla__slot tabla__slot--problemas" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--mes">
+          <app-molecula-mes />
+        </td>
+        <td class="tabla__slot tabla__slot--problemas">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.problemas)" />
-        </div>
-        <div class="tabla__slot tabla__slot--teoria" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--teoria">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.teoria)" />
-        </div>
-        <div class="tabla__slot tabla__slot--trabajos" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--trabajos">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.trabajos)" />
-        </div>
-        <div class="tabla__slot tabla__slot--tareas" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--tareas">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.tareas)" />
-        </div>
-        <div class="tabla__slot tabla__slot--examenes" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--examenes">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoNum(fila.examenes)" />
-        </div>
-        <div class="tabla__slot tabla__slot--pct" role="cell">
+        </td>
+        <td class="tabla__slot tabla__slot--pct">
           <app-celdas tipo="Texto" tamano="Desktop" [texto]="textoPorcentaje(fila.porcentaje)" />
-        </div>
-      </div>
-    </div>
-  }
-</div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
 </div>

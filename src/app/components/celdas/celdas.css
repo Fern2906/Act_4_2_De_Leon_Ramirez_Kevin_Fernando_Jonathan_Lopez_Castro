@@ -40,13 +40,13 @@
 }
 
 .celda--tipo-texto.celda--color-encabezado.celda--tamano-desktop {
-  width: 65px;
-  height: 32px;
+  
+  
   padding: 4px;
 }
 
 .celda--tipo-texto.celda--color-encabezado.celda--tamano-tablet {
-  height: 32px;
+  
   padding: var(--padding-tablet);
 }
 
@@ -61,7 +61,7 @@
 }
 
 .celda--tipo-mes.celda--color-encabezado.celda--tamano-desktop {
-  width: 75px;
+  
   padding: 8px 5px;
   align-items: flex-start;
 }
@@ -72,7 +72,7 @@
 }
 
 .celda--tipo-mes.celda--color-encabezado.celda--tamano-mobile {
-  height: 32px;
+  
   padding: 6px 4px;
 }
 
@@ -86,7 +86,7 @@
 
 .celda--tipo-mes.celda--tamano-tablet .celda__mes-nav,
 .celda--tipo-mes.celda--tamano-mobile .celda__mes-nav {
-  width: 30px;
+  
   flex: 0 0 30px;
 }
 
@@ -121,14 +121,14 @@
 }
 
 .celda--tipo-vacia.celda--tamano-desktop {
-  width: 20px;
-  height: 24px;
+  min-width: 20px;
+  min-height: 24px;
 }
 
 .celda--tipo-vacia.celda--tamano-tablet,
 .celda--tipo-vacia.celda--tamano-mobile {
-  width: 20px;
-  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
 }
 
 .celda--tipo-vacia.celda--color-predeterminado {
@@ -159,19 +159,6 @@
   justify-content: center;
 }
 
-.celda--tipo-boton.celda--tamano-desktop {
-  width: 44px;
-}
-
-.celda--tipo-boton.celda--tamano-tablet {
-  width: 40px;
-}
-
-.celda--tipo-boton.celda--tamano-mobile {
-  width: 32px;
-  height: 32px;
-}
-
 .celda__boton {
   display: flex;
   flex: 1;
@@ -200,7 +187,6 @@
   background: var(--background-white);
   flex-direction: column;
   align-items: flex-start;
-  word-break: break-word;
 }
 
 .celda--tipo-tema.celda--tamano-desktop {
@@ -212,7 +198,7 @@
 }
 
 .celda--tipo-tema.celda--tamano-mobile {
-  height: 32px;
+  
   padding: 0 4px;
 }
 
@@ -224,9 +210,6 @@
   line-height: normal;
 }
 
-.celda--tipo-tema.celda--tamano-desktop .celda__titulo {
-  height: 16px;
-}
 
 .celda__descripcion {
   margin: 0;
@@ -236,17 +219,12 @@
   line-height: normal;
 }
 
-.celda--tipo-tema.celda--tamano-desktop .celda__descripcion {
-  height: 16px;
-}
-
 .celda--tipo-tema.celda--tamano-mobile .celda__titulo,
 .celda--tipo-tema.celda--tamano-mobile .celda__descripcion {
   flex: 1;
   min-height: 0;
 }
 
-/* ── Showcase (vista de demostración) ── */
 .celdas-showcase {
   display: flex;
   flex-direction: column;

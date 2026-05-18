@@ -1,4 +1,3 @@
-/* ── Base (Figma Frame8) ── */
 .card {
   box-sizing: border-box;
   background: var(--background-soft);
@@ -7,7 +6,6 @@
   position: relative;
 }
 
-/* ── Modo contenido (uso en vistas) ── */
 .card--tipo-contenido {
   display: flex;
   flex-direction: column;
@@ -33,13 +31,13 @@
 }
 
 .card--tipo-contenido .card__subtitulo {
-  font: var(--text-body-small);
+  font: var(--text-heading-h2);
   color: var(--neutral);
 }
 
 .card--tipo-contenido .card__titulo {
-  font: var(--text-body-second);
-  color: var(--primary-blue);
+  font: var(--text-heading-h1);
+  color: var(--blue-dark);
 }
 
 .card--tipo-contenido .card__etiquetas {
@@ -166,7 +164,7 @@
 .card--tipo-backlog {
   display: flex;
   flex-direction: column;
-  padding: 18px 22px;
+  padding: 22px 18px;
   overflow: hidden;
 }
 
@@ -231,6 +229,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 8px;
   margin-top: 12px;
   min-height: 0;
@@ -238,10 +237,11 @@
 
 /* ── Leyenda ── */
 .card--tipo-leyenda {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  gap: 7px;
-  padding: 17px 29px;
+  align-items: left;
+  gap: 10px;
+  padding: 20px 20px;
 }
 
 .card--tipo-leyenda.card--tamano-desktop {
@@ -254,7 +254,6 @@
   width: 100%;
   max-width: 1260px;
   min-height: 163px;
-  align-items: center;
 }
 
 .card--tipo-leyenda.card--tamano-mobile {
@@ -265,17 +264,18 @@
 }
 
 .card__leyenda-titulo {
-  margin: 0;
   font: var(--text-heading-h1);
   color: var(--blue-dark);
-  text-align: center;
+  text-align: left;
 }
 
 .card__leyenda-etiquetas {
   display: flex;
+  align-self: stretch;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 7px;
+  align-items: left;
+  justify-content: left;
+  gap: 25px; 
 }
 
 .card--tipo-leyenda.card--tamano-tablet .card__leyenda-etiquetas {
@@ -315,6 +315,13 @@
   max-width: 358px;
   min-height: 202px;
   padding: 30px 22px;
+}
+
+.card__backlog-card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  width: 100%;   
 }
 
 .card__backlog-card-texto {
@@ -397,8 +404,16 @@
   padding: 15px;
 }
 
+.card__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
 .card--tipo-texto.card--tamano-desktop {
   width: 450px;
+  min-width: fit-content;
   min-height: 100px;
 }
 

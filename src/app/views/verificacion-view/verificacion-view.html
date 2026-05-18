@@ -15,65 +15,53 @@
 
   @if (!isMobile()) {
   <div class="verificacion__body">
+    <!-- Hero ocupa todo el ancho -->
     <app-card
       tipo="Principal"
       tamano="Desktop"
       subtitulo="Universidad Autónoma de San Luis Potosí"
-      titulo="FORMA AAAE01 - Verificación del Cumplimiento del Programa"
-      class="hero-card" />
+    titulo="FORMA AAAE01 - Verificación del Cumplimiento del Programa"
+    class="hero-card" />
 
-    <section class="datos">
-      <app-card tipo="texto" tamano="Desktop" titulo="PROFESOR" subtitulo="Nombre" />
-      <app-card tipo="texto" tamano="Desktop" titulo="Área" subtitulo="Área de Ciencias de la Computación" />
-      <app-card tipo="texto" tamano="Desktop" titulo="CICLO ESCOLAR" subtitulo="2025-2026 / II" />
-      <app-card tipo="texto" tamano="Desktop" titulo="Materia - Grupo - Horario">
-        <app-dropdown
-          estado="default"
-          tamano="mediano"
-          label="Seleccionar 2"
-          [items]="['AAAE01 - 01 - 07:00', 'AAAE01 - 02 - 09:00', 'AAAE01 - 03 - 11:00']" />
-      </app-card>
-    </section>
+    <div class="layout-principal">
 
-    <main class="contenido">
-      <section class="panel-principal">
-        <div class="acciones">
-          <app-button
-            type="primario"
-            size="desktop"
-            icon="Icono_agregar"
-            label="Registrar sesión"
-            [showIcon]="true"
-            (click)="abrirModalSesion()" />
-          <app-button
-            type="secundario"
-            size="desktop"
-            icon="Icono_notebook"
-            label="Añadir tema"
-            [showIcon]="true"
-            (click)="abrirModalTema()" />
-        </div>
+      <!-- Columna izquierda: datos + acciones + tabla -->
+      <div class="columna-izquierda">
+        <section class="datos">
+          <app-card tipo="texto" tamano="Desktop" titulo="PROFESOR" subtitulo="Nombre" />
+          <app-card tipo="texto" tamano="Desktop" titulo="Área" subtitulo="Área de Ciencias de la Computación" />
+          <app-card tipo="texto" tamano="Desktop" titulo="CICLO ESCOLAR" subtitulo="2025-2026 / II" />
+          <app-card tipo="texto" tamano="Desktop" titulo="Materia - Grupo - Horario">
+            <app-dropdown
+              estado="default"
+              tamano="mediano"
+              label="Seleccionar 2"
+              [items]="['AAAE01 - 01 - 07:00', 'AAAE01 - 02 - 09:00', 'AAAE01 - 03 - 11:00']" />
+          </app-card>
+        </section>
 
-        <app-card
-          tipo="TablaCard"
-          tamano="Desktop"
-          [filasTabla]="filasTabla()"
-          [mostrarMoleculaTabla]="false"
-          [botones]="[
-            { label: 'Exportar Excel', type: 'secundario', icon: 'Icono_excel' },
-            { label: 'Exportar PDF', type: 'primario', icon: 'Icono_pdf' }
-          ]" />
-        <app-card
-          tipo="Leyenda"
-          tamano="Desktop"
-          titulo="Leyenda"
-          [etiquetas]="[
-            { estado: 'clase', porcentaje: 'Clase' },
-            { estado: 'examen', porcentaje: 'Examen' },
-            { estado: 'atraso', porcentaje: 'Atraso' },
-            { estado: 'administrativa', porcentaje: 'Administrativa' }
-          ]" />
-      </section>
+        <section class="panel-principal">
+          <div class="acciones">
+            <app-button type="primario" size="desktop" icon="Icono_agregar"
+              label="Registrar sesión" [showIcon]="true" (click)="abrirModalSesion()" />
+            <app-button type="secundario" size="desktop" icon="Icono_notebook"
+              label="Añadir tema" [showIcon]="true" (click)="abrirModalTema()" />
+          </div>
+          <app-card tipo="TablaCard" tamano="Desktop" [filasTabla]="filasTabla()"
+            [mostrarMoleculaTabla]="false"
+            [botones]="[
+              { label: 'Exportar Excel', type: 'secundario', icon: 'Icono_excel' },
+              { label: 'Exportar PDF', type: 'primario', icon: 'Icono_pdf' }
+            ]" />
+          <app-card tipo="Leyenda" tamano="Desktop" titulo="Leyenda"
+            [etiquetas]="[
+              { estado: 'clase', porcentaje: 'Clase' },
+              { estado: 'examen', porcentaje: 'Examen' },
+              { estado: 'atraso', porcentaje: 'Atraso' },
+              { estado: 'administrativa', porcentaje: 'Administrativa' }
+            ]" />
+        </section>
+      </div>
 
       <aside class="sidebar">
         <app-card
@@ -95,7 +83,8 @@
           </div>
         </app-card>
       </aside>
-    </main>
+
+    </div>
   </div>
   }
 

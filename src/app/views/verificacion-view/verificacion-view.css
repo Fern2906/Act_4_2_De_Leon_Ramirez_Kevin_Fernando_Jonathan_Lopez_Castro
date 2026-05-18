@@ -6,6 +6,25 @@
   overflow-x: hidden;
 }
 
+.layout-principal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--layout-sidebar);
+  gap: var(--layout-gap-sm);
+  align-items: start;
+}
+
+.columna-izquierda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-width: 0;
+  background-color: var(--background-soft);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  border-color: var(--border-strong) ;
+  padding: var(--space-md);
+}
+
 .topbar {
   background: var(--blue-dark);
   color: var(--background-white);
@@ -41,7 +60,7 @@
   padding: 22px 31px 40px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: 20px;  /* ← aumenta el gap entre secciones */
   width: 100%;
 }
 
@@ -53,7 +72,8 @@
 .datos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-sm) var(--layout-gap-md);
+  gap: 12px 20px;  /* ← ajusta el gap vertical y horizontal */
+  align-items: start;
 }
 
 .datos ::ng-deep .card--tipo-texto.card--tamano-desktop {
@@ -62,10 +82,14 @@
   min-height: 100px;
 }
 
+.datos ::ng-deep .card--tipo-texto .card__texto app-dropdown select {
+  width: 100%;
+}
+
 .contenido {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--layout-sidebar);
-  gap: var(--layout-gap-sm);
+  gap: 20px;  /* ← consistente con el resto */
   align-items: start;
 }
 
@@ -101,8 +125,7 @@
 
 .sidebar {
   position: sticky;
-  top: var(--space-lg);
-  min-width: 0;
+  top: 20px;
 }
 
 .sidebar__items {
@@ -197,22 +220,21 @@
 }
 
 @media (max-width: 1200px) {
-  .contenido {
+  
+  .layout-principal {
     grid-template-columns: 1fr;
   }
-
   .sidebar {
     position: static;
     order: 2;
   }
+  .columna-izquierda {
+    order: 1;
+    background-color: red;
+  }
 
   .panel-principal {
     order: 1;
-  }
-
-  .sidebar ::ng-deep .card--tipo-backlog.card--tamano-desktop {
-    width: 100%;
-    max-width: none;
   }
 }
 

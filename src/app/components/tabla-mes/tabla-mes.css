@@ -1,116 +1,49 @@
 .tabla {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   max-width: var(--layout-tabla-max);
-  border-radius: var(--radius-xs);
-}
-
-.tabla__fila {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-}
-
-.tabla__grupo-izq {
-  display: flex;
-  flex-shrink: 0;
-  width: 294px;
-}
-
-.tabla__grupo-der {
-  display: flex;
-  flex: 1;
-  min-width: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
 }
 
 .tabla__slot {
-  display: flex;
-  align-items: stretch;
-  flex-shrink: 0;
+  padding: 0;
+  height: 1px;
 }
 
 .tabla__slot app-celdas,
 .tabla__slot app-molecula-mes {
-  display: block;
+  display: flex;
   width: 100%;
+  height: 100%;
 }
 
 .tabla__slot ::ng-deep .celda {
   width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
-/* Anchos — encabezado izquierdo */
-.tabla__slot--tema-h,
-.tabla__slot--tema {
-  width: 214px;
-}
-
-.tabla__slot--hp-h,
-.tabla__slot--hp,
-.tabla__slot--hr-h,
-.tabla__slot--hr {
-  width: 40px;
-}
-
-.tabla__slot--mes-h,
-.tabla__slot--mes {
-  width: 358px;
-}
-
-/* Anchos — columnas derechas */
-.tabla__slot--problemas-h,
-.tabla__slot--problemas {
-  width: 70px;
-}
-
-.tabla__slot--teoria-h,
-.tabla__slot--teoria {
-  width: 45px;
-}
-
-.tabla__slot--trabajos-h,
-.tabla__slot--trabajos {
-  width: 58px;
-}
-
-.tabla__slot--tareas-h,
-.tabla__slot--tareas {
-  width: 47px;
-}
-
-.tabla__slot--examenes-h,
-.tabla__slot--examenes {
-  width: 70px;
-}
-
-.tabla__slot--pct-h,
-.tabla__slot--pct {
-  width: 44px;
+/* Permitir que la columna de TEMA absorba todo el espacio restante */
+.tabla__slot--tema-h {
+  width: 100%;
 }
 
 /* Celda tema + botón eliminar */
-.tabla__slot--tema {
+.tabla__tema-wrapper {
   display: flex;
   align-items: stretch;
+  width: 100%;
+  height: 100%;
 }
 
 .tabla__tema-celda {
-  width: 170px;
-  flex-shrink: 0;
+  flex: 1;
 }
 
-.tabla__slot--tema > app-celdas:last-child {
-  width: 44px;
+.tabla__tema-wrapper > app-celdas:last-child {
+  width: auto;
   flex-shrink: 0;
-}
-
-/* Altura filas de datos */
-.tabla__fila:not(.tabla__fila--encabezado) .tabla__slot--hp ::ng-deep .celda,
-.tabla__fila:not(.tabla__fila--encabezado) .tabla__slot--hr ::ng-deep .celda,
-.tabla__fila:not(.tabla__fila--encabezado) .tabla__grupo-der .tabla__slot ::ng-deep .celda {
-  min-height: 40px;
 }
 
 /* Celdas de encabezado y datos ocupan el slot */
@@ -159,25 +92,5 @@
 @media (max-width: 1024px) {
   .tabla {
     min-width: var(--layout-tabla-max);
-  }
-}
-
-@media (max-width: 768px) {
-  .tabla__grupo-izq {
-    width: 260px;
-  }
-
-  .tabla__slot--tema-h,
-  .tabla__slot--tema {
-    width: 180px;
-  }
-
-  .tabla__tema-celda {
-    width: 136px;
-  }
-
-  .tabla__slot--mes-h,
-  .tabla__slot--mes {
-    width: 280px;
   }
 }
