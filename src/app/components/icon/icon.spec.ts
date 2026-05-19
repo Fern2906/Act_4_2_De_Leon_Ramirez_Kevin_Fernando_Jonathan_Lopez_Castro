@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { vi } from 'vitest';
 import { Icon } from './icon';
 
 describe('Icon', () => {
@@ -23,11 +22,10 @@ describe('Icon', () => {
   });
 
   // ── Valores por defecto ──────────────────────────────────
-  /** Al no recibir inputs, name debe ser cadena vacía, size=24 y svg=cadena vacía. */
+  /** Al no recibir inputs, name debe ser cadena vacía y size debe ser 24. */
   it('debe tener valores por defecto correctos', () => {
     expect(component.name).toBe('');
     expect(component.size).toBe(24);
-    expect(component.svg).toBe('');
   });
 
   // ── Inputs ────────────────────────────────────────────
@@ -43,17 +41,12 @@ describe('Icon', () => {
     expect(component.size).toBe(32);
   });
 
-  // ── ngOnChanges: no dispara fetch con name vacío ─────────────────
-  /**
-   * Cuando name es cadena vacía, ngOnChanges debe omitir la llamada a fetch
-   * para evitar peticiones HTTP inútiles en el entorno de pruebas.
-   */
-  it('no debe llamar a fetch si name está vacío', () => {
-    const fetchSpy = vi.spyOn(window, 'fetch');
-    component.name = '';
-    component.ngOnChanges();
-    expect(fetchSpy).not.toHaveBeenCalled();
-    fetchSpy.mockRestore();
+  // ── maskUrl ───────────────────────────────────────────────────
+  /** maskUrl debe retornar un SafeStyle cuyo valor incluya el nombre del icono. */
+  it('maskUrl debe incluir el nombre del icono', () => {
+    component.name = 'Icono_agregar';
+    const url = (component.maskUrl as any).changingThisBreaksApplicationSecurity as string;
+    expect(url).toContain('Icono_agregar');
   });
 });
 

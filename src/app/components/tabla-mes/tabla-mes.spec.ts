@@ -34,14 +34,19 @@ describe('TablaMes', () => {
     expect(component.filas.length).toBe(4);
   });
 
-  /** mesActual debe iniciar como 'MES' hasta que el usuario navegue entre meses. */
-  it('debe tener mesActual igual a "MES" por defecto', () => {
-    expect(component.mesActual).toBe('MES');
+  /** mostrarMolecula debe iniciar en false por defecto. */
+  it('debe tener mostrarMolecula en false por defecto', () => {
+    expect(component.mostrarMolecula).toBe(false);
   });
 
-  /** La tabla muestra exactamente 14 columnas de días (2 semanas de planeación). */
-  it('debe tener exactamente 14 columnas de días', () => {
-    expect(component.dias.length).toBe(14);
+  /** textoNum debe retornar el número como string cuando no es null. */
+  it('textoNum debe retornar string del número', () => {
+    expect(component.textoNum(5)).toBe('5');
+  });
+
+  /** textoNum debe retornar "Num" cuando el valor es null. */
+  it('textoNum debe retornar "Num" cuando es null', () => {
+    expect(component.textoNum(null)).toBe('Num');
   });
 
   /** Ninguna fila por defecto debe tener porcentaje asignado; todas deben ser null. */
@@ -62,14 +67,14 @@ describe('TablaMes', () => {
   });
 
   // ── Métodos de navegación ───────────────────────────────────────────────
-  /** anteriorMes debe poder ejecutarse sin lanzar excepciones. */
-  it('anteriorMes no debe lanzar errores', () => {
-    expect(() => component.anteriorMes()).not.toThrow();
+  /** onMesAnterior debe poder ejecutarse sin lanzar excepciones. */
+  it('onMesAnterior no debe lanzar errores', () => {
+    expect(() => component.onMesAnterior()).not.toThrow();
   });
 
-  /** siguienteMes debe poder ejecutarse sin lanzar excepciones. */
-  it('siguienteMes no debe lanzar errores', () => {
-    expect(() => component.siguienteMes()).not.toThrow();
+  /** onMesSiguiente debe poder ejecutarse sin lanzar excepciones. */
+  it('onMesSiguiente no debe lanzar errores', () => {
+    expect(() => component.onMesSiguiente()).not.toThrow();
   });
 
   // ── Estructura TablaFila ───────────────────────────────────────────

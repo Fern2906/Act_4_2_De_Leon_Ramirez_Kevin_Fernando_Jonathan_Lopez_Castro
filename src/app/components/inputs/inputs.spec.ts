@@ -28,53 +28,53 @@ describe('Inputs', () => {
     expect(component.tamano).toBe('grande');
   });
 
-  // ── Getter inputType ───────────────────────────────────
+  // ── Getter htmlInputType ─────────────────────────────────
   describe('inputType', () => {
-    /** inputType debe retornar 'text' cuando tipo='texto'. */
+    /** htmlInputType debe retornar 'text' cuando tipo='texto'. */
     it('debe devolver text para tipo texto', () => {
       component.tipo = 'texto';
-      expect(component.inputType).toBe('text');
+      expect(component.htmlInputType).toBe('text');
     });
 
-    /** inputType debe retornar 'number' cuando tipo='numero'. */
+    /** htmlInputType debe retornar 'number' cuando tipo='numero'. */
     it('debe devolver number para tipo numero', () => {
       component.tipo = 'numero';
-      expect(component.inputType).toBe('number');
+      expect(component.htmlInputType).toBe('number');
     });
 
-    /** inputType debe retornar 'date' cuando tipo='fecha'. */
+    /** htmlInputType debe retornar 'date' cuando tipo='fecha'. */
     it('debe devolver date para tipo fecha', () => {
       component.tipo = 'fecha';
-      expect(component.inputType).toBe('date');
+      expect(component.htmlInputType).toBe('date');
     });
 
-    /** Para cualquier tipo no reconocido, inputType debe retornar 'text' como valor seguro. */
+    /** Para cualquier tipo no reconocido, htmlInputType debe retornar 'text' como valor seguro. */
     it('debe devolver text para tipo desconocido', () => {
       component.tipo = 'desconocido';
-      expect(component.inputType).toBe('text');
+      expect(component.htmlInputType).toBe('text');
     });
   });
 
-  // ── Getter inputPlaceholder ─────────────────────────────
+  // ── Getter placeholder ───────────────────────────────────
   describe('inputPlaceholder', () => {
     it('debe devolver el placeholder correcto para texto', () => {
       component.tipo = 'texto';
-      expect(component.inputPlaceholder).toBe('Ingrese texto...');
+      expect(component.placeholder).toBe('Inserte texto...');
     });
 
     it('debe devolver el placeholder correcto para numero', () => {
       component.tipo = 'numero';
-      expect(component.inputPlaceholder).toBe('Ingrese cantidad...');
+      expect(component.placeholder).toBe('Inserte cantidad...');
     });
 
     it('debe devolver el placeholder correcto para fecha', () => {
       component.tipo = 'fecha';
-      expect(component.inputPlaceholder).toBe('Fecha');
+      expect(component.placeholder).toBe('Fecha');
     });
 
-    it('debe devolver cadena vacía para tipo desconocido', () => {
+    it('debe devolver el placeholder por defecto para tipo desconocido', () => {
       component.tipo = 'otro';
-      expect(component.inputPlaceholder).toBe('');
+      expect(component.placeholder).toBe('Inserte texto...');
     });
   });
 });
