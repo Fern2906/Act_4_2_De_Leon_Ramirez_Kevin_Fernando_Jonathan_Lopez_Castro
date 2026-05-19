@@ -182,12 +182,13 @@
 
   <app-modal
     titulo="Registrar Sesión"
-    [variante]="isMobile() ? 'movil' : 'estandar'"
+    [tamano]="isMobile() ? 'Mobile' : 'Desktop'"
     [visible]="modalSesionVisible()"
     [botones]="isMobile() ?
       [{ label: 'Cerrar', type: 'secundario' }, { label: 'Guardar sesión', type: 'primario' }] :
       [{ label: 'Cancelar', type: 'secundario' }, { label: 'Registrar', type: 'primario' }]"
-    (cerrar)="modalSesionVisible.set(false)">
+    (cerrar)="modalSesionVisible.set(false)"
+    (accion)="modalSesionVisible.set(false)">
 
     <div class="modal-fila modal-fila--1col">
       <div class="modal-campo">
@@ -236,13 +237,14 @@
 
   <app-modal
     titulo="Añadir / editar tema"
-    [variante]="isMobile() ? 'movil' : 'estandar'"
+    [tamano]="isMobile() ? 'Mobile' : 'Desktop'"
     [visible]="modalTemaVisible()"
     [botones]="[
       { label: 'Cerrar', type: 'secundario' },
       { label: 'Guardar tema', type: 'primario' }
     ]"
-    (cerrar)="modalTemaVisible.set(false)">
+    (cerrar)="modalTemaVisible.set(false)"
+    (accion)="modalTemaVisible.set(false)">
 
     <div class="modal-fila modal-fila--1col">
       <div class="modal-campo">
