@@ -1,68 +1,75 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Button } from '../button/button';
+import { Icon } from '../icon/icon';
 
-/** Definición de un botón del pie del modal. */
 export interface ModalBoton {
-  /** Texto visible del botón. */
   label: string;
-  /** Variante visual del botón. Predeterminado: `'primario'`. */
   type?: 'primario' | 'secundario' | 'exito' | 'alerta' | 'icono' | 'usuario';
+  icon?: string;
 }
 
-/**
- * Diálogo modal con overlay configurable.
- *
- * Cuando `visible` es `true`, el componente se muestra sobre el contenido
- * con un fondo semitransparente. Al pulsar el botón de cierre o cualquier
- * botón que llame a `onCerrar()`, emite el evento `cerrar` y oculta el panel.
- *
- * @example
- * <app-modal
- *   titulo="Confirmar acción"
- *   [visible]="mostrarModal"
- *   [botones]="[{ label: 'Cancelar', type: 'secundario' }, { label: 'Aceptar', type: 'primario' }]"
- *   (cerrar)="mostrarModal = false"
- * />
- */
+export type ModalTipo = 'Tema' | 'Sesion';
+export type ModalTamano = 'Desktop' | 'Tablet' | 'Mobile';
+
 @Component({
   selector: 'app-modal',
-  imports: [Button],
+  imports: [Button, Icon],
   templateUrl: './modal.html',
   styleUrl: './modal.css',
 })
 export class Modal {
-  /** Título principal mostrado en la cabecera del modal. */
+  @Input() tipo: ModalTipo = 'Tema';
+  @Input() tamano: ModalTamano = 'Desktop';
   @Input() titulo = 'Texto principal';
-
-  /**
-   * Controla la visibilidad del modal.
-   * - `true`  → muestra el overlay.
-   * - `false` → oculta el componente.
-   */
   @Input() visible = false;
+  /** Muestra el panel sin overlay (showcase / documentación) */
+  @Input() inline = false;
+  /** Si es false, el overlay no cierra el modal (comportamiento Figma AAAE01) */
+  @Input() cerrarConBackdrop = false;
 
-  /**
-   * Variante visual del modal.
-   * - `'estandar'` → comportamiento por defecto (pantalla completa en móvil).
-   * - `'movil'`    → panel flotante compacto que no cubre toda la pantalla en móvil.
-   */
-  @Input() variante: 'estandar' | 'movil' = 'estandar';
-
-  /** Lista de botones renderizados en el pie del modal. */
   @Input() botones: ModalBoton[] = [
-    { label: 'Button', type: 'secundario' },
-    { label: 'Button', type: 'primario' },
+    { label: 'Button', type: 'secundario', icon: 'Icono_add' },
+    { label: 'Button', type: 'primario', icon: 'Icono_agregar' },
   ];
 
-  /** Se emite cuando el usuario cierra el modal (botón \u2715 o acción programada). */
   @Output() cerrar = new EventEmitter<void>();
+  @Output() accion = new EventEmitter<string>();
 
-  /**
-   * Oculta el modal y emite el evento `cerrar`.
-   * Llamar desde el template o desde el componente padre para cerrar el diálogo.
-   */
+  get iconoHeader(): string {
+    return this.tipo === 'Tema' ? 'Icono_notebook' : 'Icono_add';
+  }
+
+  clasePanel(): string {
+    return [
+      'modal__panel',
+      `modal__panel--tipo-${this.slug(this.tipo)}`,
+      `modal__panel--tamano-${this.slug(this.tamano)}`,
+    ].join(' ');
+  }
+
+  tamanoBoton(): 'desktop' | 'tablet' | 'mobile' {
+    if (this.tamano === 'Mobile') return 'mobile';
+    if (this.tamano === 'Tablet') return 'tablet';
+    return 'desktop';
+  }
+
   onCerrar(): void {
-    this.visible = false;
+    if (!this.inline) {
+      this.visible = false;
+    }
     this.cerrar.emit();
+  }
+
+  onBackdropClick(): void {
+    if (this.cerrarConBackdrop && !this.inline) {
+      this.onCerrar();
+    }
+  }
+
+  private slug(value: string): string {
+    return value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
   }
 }

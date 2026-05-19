@@ -26,20 +26,20 @@
 }
 
 .span--completado {
-    color: #003017;
+    color: var(--success-text);
     border: 1px solid var(--success);
-    background: #BAE8C1;
+    background: var(--success-light);
 }
 
 .span--masDel25 {
-    color: #003017;
+    color: var(--success-text);
     border: 1px solid var(--blue-dark);
-    background: #B8C2E3;
+    background: var(--accent-perfil-light);
 }
 
 .span--menosDel25 {
-    color: #003017;
+    color: var(--success-text);
     border: 1px solid var(--neutral);
-    background: rgba(234, 233, 233, 0.85);
+    background: var(--surface-muted);
 }
 
