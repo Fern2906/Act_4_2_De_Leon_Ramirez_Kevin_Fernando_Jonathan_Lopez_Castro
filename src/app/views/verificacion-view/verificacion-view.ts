@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, HostListener, inject, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Button } from '../../components/button/button';
-import { TablaFila } from '../../components/tabla-mes/tabla-mes';
+import { BarraBusqueda } from '../../components/barra-busqueda/barra-busqueda';
+import { TablaMes, TablaFila } from '../../components/tabla-mes/tabla-mes';
+import { Etiqueta } from '../../components/etiqueta/etiqueta';
 import { Dropdown } from '../../components/dropdown/dropdown';
 import { Card } from '../../components/card/card';
 import { Modal } from '../../components/modal/modal';
@@ -15,7 +17,7 @@ interface BacklogTema {
 
 @Component({
   selector: 'app-verificacion-view',
-  imports: [Button, Dropdown, Card, Modal, Inputs],
+  imports: [Button, BarraBusqueda, TablaMes, Etiqueta, Dropdown, Card, Modal, Inputs],
   templateUrl: './verificacion-view.html',
   styleUrl: './verificacion-view.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,21 +29,41 @@ export class VerificacionView {
     isPlatformBrowser(this.platformId) ? window.innerWidth <= 760 : false
   );
 
-  @HostListener('window:resize')
-  onResize(): void {
-    this.isMobile.set(window.innerWidth <= 760);
+  readonly isTablet = signal(
+    isPlatformBrowser(this.platformId)
+      ? window.innerWidth > 760 && window.innerWidth <= 1024
+      : false
+  );
+
+  /** Controla la visibilidad del modal de registro de sesión. */
+  readonly modalSesionVisible = signal(false);
+
+  /** Abre el modal de registro de sesión. */
+  abrirModalSesion(): void {
+    this.modalSesionVisible.set(true);
   }
 
-  // Señales para los modales
-  readonly mostrarModalSesion = signal(false);
-  readonly mostrarModalTema = signal(false);
+  /** Controla la visibilidad del modal de añadir o editar tema. */
+  readonly modalTemaVisible = signal(false);
 
-  readonly filasTabla = signal<TablaFila[]>([
+  /** Abre el modal de añadir / editar tema. */
+  abrirModalTema(): void {
+    this.modalTemaVisible.set(true);
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    const w = window.innerWidth;
+    this.isMobile.set(w <= 760);
+    this.isTablet.set(w > 760 && w <= 1024);
+  }
+
+  readonly filasTabla: TablaFila[] = [
     { titulo: 'Tema 1', descripcion: 'Descripción 1', hp: null, hr: null, problemas: null, teoria: null, trabajos: null, tareas: null, examenes: null, porcentaje: null },
     { titulo: 'Tema 2', descripcion: 'Descripción 2', hp: null, hr: null, problemas: null, teoria: null, trabajos: null, tareas: null, examenes: null, porcentaje: null },
     { titulo: 'Tema 3', descripcion: 'Descripción 3', hp: null, hr: null, problemas: null, teoria: null, trabajos: null, tareas: null, examenes: null, porcentaje: null },
     { titulo: 'Tema 4', descripcion: 'Descripción 4', hp: null, hr: null, problemas: null, teoria: null, trabajos: null, tareas: null, examenes: null, porcentaje: null },
-  ]);
+  ];
 
   private readonly backlog = signal<BacklogTema[]>([
     { titulo: 'Tema 1', descripcion: 'Descripción 1', progreso: 'value%' },
@@ -65,41 +87,5 @@ export class VerificacionView {
 
   onBuscar(valor: string): void {
     this.filtro.set(valor);
-  }
-
-  // Interacciones de modales
-  abrirModalSesion(): void {
-    this.mostrarModalSesion.set(true);
-  }
-
-  abrirModalTema(): void {
-    this.mostrarModalTema.set(true);
-  }
-
-  handleAccionSesion(accion: string): void {
-    if (accion === 'Guardar sesión') {
-      // Lógica de negocio simulada
-      console.log('Sesión guardada');
-    }
-    this.mostrarModalSesion.set(false);
-  }
-
-  handleAccionTema(accion: string): void {
-    if (accion === 'Guardar tema') {
-      const nuevoNumero = this.backlog().length + 1;
-      const nuevoTema: BacklogTema = {
-        titulo: `Tema ${nuevoNumero}`,
-        descripcion: 'Nuevo tema registrado',
-        progreso: '0%'
-      };
-      
-      this.backlog.update(prev => [...prev, nuevoTema]);
-      this.filasTabla.update(prev => [...prev, {
-        titulo: nuevoTema.titulo,
-        descripcion: nuevoTema.descripcion,
-        hp: null, hr: null, problemas: null, teoria: null, trabajos: null, tareas: null, examenes: null, porcentaje: null
-      }]);
-    }
-    this.mostrarModalTema.set(false);
   }
 }
